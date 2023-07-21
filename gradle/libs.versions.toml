@@ -7,6 +7,8 @@ androidx-junit = "1.1.5"
 androidx-espresso = "3.5.1"
 androidxComposeBom = "2023.06.01"
 androidxNavigation = "2.6.0"
+koinAndroid = "3.4.2"
+koinTest = "3.4.1"
 # Plugins versions
 androidGradlePlugin = "8.0.2"
 androidLibraryPlugin = "8.0.2"
@@ -30,6 +32,9 @@ androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
+koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koinAndroid" }
+koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koinTest" }
+koin-test-junit4 = { group = "io.insert-koin", name = "koin-test-junit4", version.ref = "koinTest" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

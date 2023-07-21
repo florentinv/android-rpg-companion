@@ -54,4 +54,8 @@ dependencies {
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso)
+
+    // Koin
+    implementation(libs.koin.android)
+    testImplementation(libs.koin.test.junit4)
 }
