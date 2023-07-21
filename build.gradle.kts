@@ -1,11 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-buildscript {
-    ext {
-        compose_ui_version = '1.4.3'
-        agp_version = '8.0.2'
-    }
-}
 
 plugins {
     alias(libs.plugins.jlleitschuh.ktlint) apply false

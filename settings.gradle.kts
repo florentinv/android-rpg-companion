@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "RPG Companion"
-include ':app'
+include(":app")
