@@ -38,7 +38,7 @@ androidx-compose-material = { group = "androidx.compose.material", name = "mater
 androidx-compose-ui-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-compose-ui-tooling-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-androidx-compose-ui-test-junit5 = { group = "androidx.compose.ui", name = "ui-test-junit5" }
+androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-junitJupiter" }
