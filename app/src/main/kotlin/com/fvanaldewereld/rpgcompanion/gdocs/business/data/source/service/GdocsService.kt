@@ -5,10 +5,10 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface GdocsService {
+fun interface GdocsService {
     @GET("v1/documents/{documentId}")
     suspend fun getGdocsById(
-        @Path("documentId") documentId: String
+        @Path("documentId") documentId: String,
     ): Response<GdocsTO>
 }
 
