@@ -9,6 +9,6 @@ class GoogleDocsDataSourceImpl : GoogleDocsDataSource {
     private val googleDocsService: GoogleDocsService by GlobalContext.get().inject()
 
     override suspend fun getGoogleDocsById(documentId: String): Document {
-        return googleDocsService.getDocs().documents().get(documentId).execute()
+        return googleDocsService.getDocs().documents()[documentId].execute()
     }
 }

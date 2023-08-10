@@ -13,6 +13,19 @@ import com.google.api.services.docs.v1.model.StructuralElement
 import com.google.api.services.docs.v1.model.TextRun
 import java.net.URL
 
+private const val SCENARIO_DOCUMENT_NAME = "Le prix du sang"
+
+private const val SCENARIO_TITLE = "⛧ LE PRIX DU SANG ⛧"
+
+private const val SCENARIO_HEADING_1_1 = "Résumé"
+
+private const val SCENARIO_NORMAL_TEXT_1 = "Les personnages se retrouvent pour un week-end ..."
+
+private const val SCENARIO_HEADING_1_2 = "Introduction"
+
+private const val SCENARIO_NORMAL_TEXT_2 =
+    "Les personnages arrivent tous sur le lieu du rendez-vous avec leurs affaires (sacs, valises..)."
+
 object ScenarioMockFactory {
 
     val googleDocsUrl =
@@ -21,36 +34,30 @@ object ScenarioMockFactory {
     const val googleDocsDocumentId = "1EAJa9JbA9tbGNbyv5AHIherdT34C4Ks6hKyIyDlZ7Os"
 
     val googleDocsDocument: Document = Document()
-        .setTitle("Le prix du sang")
+        .setTitle(SCENARIO_DOCUMENT_NAME)
         .setBody(
             Body().setContent(
                 listOf(
-                    getStructuralElement(TextType.TITLE.name, "⛧ LE PRIX DU SANG ⛧"),
-                    getStructuralElement(TextType.HEADING_1.name, "Résumé"),
-                    getStructuralElement(
-                        TextType.NORMAL_TEXT.name,
-                        "Les personnages se retrouvent pour un week-end ...",
-                    ),
-                    getStructuralElement(TextType.HEADING_1.name, "Introduction"),
-                    getStructuralElement(
-                        TextType.NORMAL_TEXT.name,
-                        "Les personnages arrivent tous sur le lieu du rendez-vous avec leurs affaires (sacs, valises..).",
-                    ),
+                    getStructuralElement(TextType.TITLE.name, SCENARIO_TITLE),
+                    getStructuralElement(TextType.HEADING_1.name, SCENARIO_HEADING_1_1),
+                    getStructuralElement(TextType.NORMAL_TEXT.name, SCENARIO_NORMAL_TEXT_1),
+                    getStructuralElement(TextType.HEADING_1.name, SCENARIO_HEADING_1_2),
+                    getStructuralElement(TextType.NORMAL_TEXT.name, SCENARIO_NORMAL_TEXT_2),
                 ),
             ),
         )
 
 
     val scenarioModel = ScenarioModel(
-        documentName = "Le prix du sang",
+        documentName = SCENARIO_DOCUMENT_NAME,
         tree = TreeModel(
-            content = "⛧ LE PRIX DU SANG ⛧",
+            content = SCENARIO_TITLE,
             children = mutableListOf(
                 TreeModel(
-                    content = "Résumé",
+                    content = SCENARIO_HEADING_1_1,
                     children = mutableListOf(
                         TreeModel(
-                            content = "Les personnages se retrouvent pour un week-end ...",
+                            content = SCENARIO_NORMAL_TEXT_1,
                             children = mutableListOf(),
                             type = TextType.NORMAL_TEXT,
                         ),
@@ -58,10 +65,10 @@ object ScenarioMockFactory {
                     type = TextType.HEADING_1,
                 ),
                 TreeModel(
-                    content = "Introduction",
+                    content = SCENARIO_HEADING_1_2,
                     children = mutableListOf(
                         TreeModel(
-                            content = "Les personnages arrivent tous sur le lieu du rendez-vous avec leurs affaires (sacs, valises..).",
+                            content = SCENARIO_NORMAL_TEXT_2,
                             children = mutableListOf(),
                             type = TextType.NORMAL_TEXT,
                         ),
@@ -74,15 +81,15 @@ object ScenarioMockFactory {
     )
 
     val scenarioUi = ScenarioUi(
-        documentName = "Le prix du sang",
+        documentName = SCENARIO_DOCUMENT_NAME,
         tree = TreeModel(
-            content = "⛧ LE PRIX DU SANG ⛧",
+            content = SCENARIO_TITLE,
             children = mutableListOf(
                 TreeModel(
-                    content = "Résumé",
+                    content = SCENARIO_HEADING_1_1,
                     children = mutableListOf(
                         TreeModel(
-                            content = "Les personnages se retrouvent pour un week-end ...",
+                            content = SCENARIO_NORMAL_TEXT_1,
                             children = mutableListOf(),
                             type = TextType.NORMAL_TEXT,
                         ),
@@ -90,10 +97,10 @@ object ScenarioMockFactory {
                     type = TextType.HEADING_1,
                 ),
                 TreeModel(
-                    content = "Introduction",
+                    content = SCENARIO_HEADING_1_2,
                     children = mutableListOf(
                         TreeModel(
-                            content = "Les personnages arrivent tous sur le lieu du rendez-vous avec leurs affaires (sacs, valises..).",
+                            content = SCENARIO_NORMAL_TEXT_2,
                             children = mutableListOf(),
                             type = TextType.NORMAL_TEXT,
                         ),

@@ -28,7 +28,11 @@
             android:name=".scenario.feature.ui.ScenarioDetailActivity"
             android:exported="true"
             android:label="@string/activity_scenario"
-            android:theme="@style/Theme.RPGCompanion" />
+            android:theme="@style/Theme.RPGCompanion">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
