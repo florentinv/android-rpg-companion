@@ -9,14 +9,15 @@ koinCore = "3.4.2"
 ktx = "1.10.1"
 loggingInterceptor = "4.11.0"
 mockitoCore = "4.10.0"
+mockk = "1.13.5"
 okhttp = "4.11.0"
 retrofit = "2.9.0"
 retrofit2KotlinCoroutinesAdapter = "0.9.2"
-runtime-ktx = "2.6.1"
-androidx-junit = "1.1.5"
-androidx-espresso = "3.5.1"
+androidxJunit = "1.1.5"
+androidxEspresso = "3.5.1"
 androidxComposeBom = "2023.06.01"
 androidxNavigation = "2.6.0"
+androidxLifecycle = "2.6.1"
 koinAndroid = "3.4.2"
 koinTest = "3.4.1"
 # Plugins versions
@@ -28,12 +29,11 @@ ktlintPlugin = "11.3.1"
 
 [libraries]
 androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
-androidx-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "runtime-ktx" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-junit" }
-androidx-espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espresso" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
+androidx-espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose" }
 androidx-compose-material = { group = "androidx.compose.material", name = "material" }
 androidx-compose-ui-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
@@ -41,6 +41,9 @@ androidx-compose-ui-tooling-tooling = { group = "androidx.compose.ui", name = "u
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
+androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidxLifecycle" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidxLifecycle" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-junitJupiter" }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junitJupiter" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junitJupiter" }
@@ -50,6 +53,7 @@ koin-junit5 = { group = "io.insert-koin", name = "koin-test-junit5", version.ref
 google-api-services-docs = { module = "com.google.apis:google-api-services-docs", version.ref = "googleApiServicesDocs" }
 google-auth-library-oauth2-http = { module = "com.google.auth:google-auth-library-oauth2-http", version.ref = "googleAuthLibraryOauth2Http" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 okhttp3-okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 okhttp3-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
 retrofit2-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }

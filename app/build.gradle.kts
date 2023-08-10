@@ -1,5 +1,6 @@
 apply(from = "${project.rootDir}/gradle/ktlint.gradle")
 apply(from = "${project.rootDir}/gradle/compose.gradle")
+apply(plugin = "kotlin-parcelize")
 
 plugins {
     alias(libs.plugins.android.application)
@@ -52,7 +53,9 @@ android {
 dependencies {
     // Androidx
     implementation(libs.androidx.ktx)
-    implementation(libs.androidx.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose)
 
     // Koin
     implementation(libs.koin.core)
@@ -76,6 +79,7 @@ dependencies {
     testImplementation(libs.junit.jupiter)
     testImplementation(libs.junit.jupiter.api)
     testImplementation(libs.mockito.core)
+    testImplementation(libs.mockk)
 
     testRuntimeOnly(libs.junit.jupiter.engine)
 
