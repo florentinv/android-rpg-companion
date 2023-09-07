@@ -4,13 +4,16 @@ package com.fvanaldewereld.rpgcompanion
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.fvanaldewereld.rpgcompanion.scenario.business.di.SCENARIO_BUSINESS_MODULE
 import com.fvanaldewereld.rpgcompanion.scenario.feature.di.SCENARIO_FEATURE_MODULE
@@ -30,13 +33,23 @@ class MainActivity : ComponentActivity() {
         }
 
         setContent {
-            RPGCompanionTheme {
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center,
+            MainContent()
+        }
+    }
+
+    @Composable
+    fun MainContent() {
+        RPGCompanionTheme {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center,
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.SpaceAround,
                 ) {
                     Button(onClick = ::goToScenarios) {
-                        Text(getString(R.string.home_page_load_scenario_button_label))
+                        Text(stringResource(R.string.home_page_load_scenario_button_label))
                     }
                 }
             }
@@ -52,17 +65,9 @@ class MainActivity : ComponentActivity() {
     @Preview(showBackground = true)
     @Composable
     fun DefaultPreview() {
-        RPGCompanionTheme {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center,
-            ) {
-                Button(onClick = { }) {
-                    Text(getString(R.string.home_page_load_scenario_button_label))
-                }
-            }
-        }
+        MainContent()
     }
+
 }
 
 

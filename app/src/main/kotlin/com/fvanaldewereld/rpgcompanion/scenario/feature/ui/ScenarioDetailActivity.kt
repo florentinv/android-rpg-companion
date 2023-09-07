@@ -13,7 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ScenarioDetailActivity : ComponentActivity() {
 
-    private val viewModel: ScenarioDetailViewModel by viewModel()
+    private val viewModel: ScenarioDetailViewModel by viewModel<ScenarioDetailViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +26,7 @@ class ScenarioDetailActivity : ComponentActivity() {
 
                 is ScenarioUiState.Success ->
                     ScenarioDetailSuccess(
-                        scenarioUI = scenarioUiState.value,
+                        scenario = scenarioUiState.value,
                     )
             }
         }

@@ -1,7 +1,7 @@
 package com.fvanaldewereld.rpgcompanion.scenario.feature.ui
 
 import android.os.Parcelable
-import com.fvanaldewereld.rpgcompanion.scenario.feature.model.ScenarioUi
+import com.fvanaldewereld.rpgcompanion.scenario.business.domain.model.ScenarioModel
 import kotlinx.parcelize.Parcelize
 
 sealed interface ScenarioUiState : Parcelable {
@@ -9,6 +9,6 @@ sealed interface ScenarioUiState : Parcelable {
     object Loading : ScenarioUiState
 
     @Parcelize
-    data class Success(val value: ScenarioUi) : ScenarioUiState
+    data class Success(val value: ScenarioModel) : ScenarioUiState
 
 }
