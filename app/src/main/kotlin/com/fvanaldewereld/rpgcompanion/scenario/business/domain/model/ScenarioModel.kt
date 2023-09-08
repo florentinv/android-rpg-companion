@@ -1,14 +1,16 @@
 package com.fvanaldewereld.rpgcompanion.scenario.business.domain.model
 
-data class ScenarioModel(
-    val documentName: String? = "",
-    val tree: TreeModel? = null,
-)
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
-enum class TextType {
-    NORMAL_TEXT,
-    HEADING_1,
-    HEADING_2,
-    HEADING_3,
-    TITLE,
-}
+@Parcelize
+data class ScenarioModel(
+    val author: AuthorModel? = null,
+    val characters: CharactersModel? = null,
+    val chapters: ChaptersModel? = null,
+    val documentName: String? = "",
+    val information: InformationModel? = null,
+    val places: PlacesModel? = null,
+    val summary: SummaryModel? = null,
+    val title: TitleModel? = null,
+) : Parcelable
