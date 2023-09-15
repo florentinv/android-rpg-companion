@@ -6,7 +6,7 @@ googleAuthLibraryOauth2Http = "1.19.0"
 junit-junitJupiter = "5.9.1"
 junitJupiter = "5.9.1"
 koinCore = "3.4.2"
-ktx = "1.10.1"
+ktx = "1.12.0"
 loggingInterceptor = "4.11.0"
 mockitoCore = "4.10.0"
 mockk = "1.13.5"
@@ -15,16 +15,17 @@ retrofit = "2.9.0"
 retrofit2KotlinCoroutinesAdapter = "0.9.2"
 androidxJunit = "1.1.5"
 androidxEspresso = "3.5.1"
-androidxComposeBom = "2023.06.01"
-androidxNavigation = "2.6.0"
-androidxLifecycle = "2.6.1"
+androidxComposeBom = "2023.09.00"
+androidxNavigation = "2.7.2"
+androidxLifecycle = "2.6.2"
 koinAndroid = "3.4.2"
 koinTest = "3.4.1"
 # Plugins versions
-androidGradlePlugin = "8.1.0"
-androidLibraryPlugin = "8.1.0"
-jetbrainKotlinPlugin = "1.8.10"
+androidGradlePlugin = "8.1.1"
+androidLibraryPlugin = "8.1.1"
+jetbrainsKotlinPlugin = "1.8.10"
 ktlintPlugin = "11.3.1"
+kotlinxKoverPlugin = "0.7.3"
 
 
 [libraries]
@@ -63,5 +64,6 @@ retrofit2-kotlin-coroutines-adapter = { module = "com.jakewharton.retrofit:retro
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidLibraryPlugin" }
-jetbrain-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "jetbrainKotlinPlugin" }
+jetbrains-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "jetbrainsKotlinPlugin" }
+jetbrains-kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kotlinxKoverPlugin" }
 jlleitschuh-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintPlugin" }

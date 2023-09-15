@@ -1,0 +1,24 @@
+apply plugin: 'kover'
+
+koverMerged {
+    enable()
+
+    filters {
+        classes {
+            def exclusions = [
+                    "*Fragment",
+                    "*Fragment\$*",
+                    "*Activity",
+                    "*Activity\$*",
+                    "*.databinding.*", // ViewBinding
+                    "*BuildConfig*"
+            ]
+
+            includes.addAll("com.fvanaldewereld.rpgcompanio.*")
+            // Please add exclusions here to exclude classes from the kover coverage computation
+            // If you want to exclude classes from sonarqube reports please also add exclusions in sonarqube.gradle (sonar.coverage.exclusions)
+            excludes.addAll(exclusions)
+        }
+    }
+}
+

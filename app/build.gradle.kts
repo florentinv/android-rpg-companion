@@ -4,7 +4,8 @@ apply(plugin = "kotlin-parcelize")
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrain.kotlin)
+    alias(libs.plugins.jetbrains.kotlin)
+    alias(libs.plugins.jetbrains.kotlinx.kover)
 }
 
 android {
