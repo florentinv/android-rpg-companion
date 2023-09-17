@@ -29,14 +29,14 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
+      - name: Build and test
+        run: ./gradlew test --info
+
+      - name: Generate Coverage Report (Debug)
+        run: ./gradlew koverXmlReportDebug --info
+
       - name: Kotlin Linter
         run: ./gradlew ktlintCheck
-
-      - name: Build
-        run: ./gradlew build --info
-
-      - name: Unit Tests and Coverage Report (Debug)
-        run: ./gradlew koverXmlReportDebug --info
 
       - name: Analyze
         env:
