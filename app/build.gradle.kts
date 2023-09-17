@@ -1,11 +1,14 @@
 apply(from = "${project.rootDir}/gradle/ktlint.gradle")
 apply(from = "${project.rootDir}/gradle/compose.gradle")
+apply(from = "${project.rootDir}/gradle/kover.gradle")
+apply(from = "${project.rootDir}/gradle/sonarqube.gradle")
 apply(plugin = "kotlin-parcelize")
 
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin)
     alias(libs.plugins.jetbrains.kotlinx.kover)
+    alias(libs.plugins.sonarqube)
 }
 
 android {
