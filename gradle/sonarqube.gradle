@@ -1,0 +1,26 @@
+apply plugin: libs.plugins.sonarqube.get().pluginId
+
+afterEvaluate {
+    sonarqube {
+        androidVariant 'debug'
+        properties {
+            property "sonar.projectName", "android-rpg-companion"
+            property "sonar.projectKey", "florentinv_android-rpg-companion"
+            property "sonar.organization", "florentinv"
+            property "sonar.host.url", "https://sonarcloud.io"
+            property "sonar.sources", "src/main"
+            property "sonar.tests", "src/test, src/androidTest"
+            property "sonar.test.inclusions", "**/androidTest"
+            property "sonar.java.coveragePlugin", "jacoco"
+            property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/kover/reportDebug.xml"
+            // Please add exclusions here to exclude classes from sonarqube coverage reports
+            // The exclusions in the kover.gradle file only exclude classes from coverage computation but they still appear on the sonarqube interface
+            property "sonar.coverage.exclusions",
+                    "**/*Fragment*" +
+                            ",**/*Activity*" +
+                            ",**/di/**/*" +
+                            ",**/com/fvanaldewereld/rpgcompanion/ui/theme/**/*" +
+                            ",**/com/fvanaldewereld/rpgcompanion/**/ui/component/**/*"
+        }
+    }
+}

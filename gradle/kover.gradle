@@ -1,0 +1,24 @@
+apply plugin: libs.plugins.jetbrains.kotlinx.kover.get().pluginId
+
+koverMerged {
+    filters {
+        classes {
+            def exclusions = [
+                    "*Fragment",
+                    "*Fragment\$*",
+                    "*Activity",
+                    "*Activity\$*",
+                    ",**/di/**/*",
+                    "com.fvanaldewereld.rpgcompanion.ui.theme.**.*",
+                    "com.fvanaldewereld.rpgcompanion.**.ui.component.**.*"
+
+            ]
+
+            includes.addAll("com.fvanaldewereld.rpgcompanion.*")
+            // Please add exclusions here to exclude classes from the kover coverage computation
+            // If you want to exclude classes from sonarqube reports please also add exclusions in sonarqube.gradle (sonar.coverage.exclusions)
+            excludes.addAll(exclusions)
+        }
+    }
+}
+
