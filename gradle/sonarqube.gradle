@@ -18,7 +18,9 @@ afterEvaluate {
             property "sonar.coverage.exclusions",
                     "**/*Fragment*" +
                             ",**/*Activity*" +
-                            ",**/di/**/*"
+                            ",**/di/**/*" +
+                            ",**/com/fvanaldewereld/rpgcompanion/ui/theme/**/*" +
+                            ",**/com/fvanaldewereld/rpgcompanion/**/ui/component/**/*"
         }
     }
 }

@@ -8,7 +8,10 @@ koverMerged {
                     "*Fragment\$*",
                     "*Activity",
                     "*Activity\$*",
-                    "*BuildConfig*"
+                    ",**/di/**/*",
+                    "com.fvanaldewereld.rpgcompanion.ui.theme.**.*",
+                    "com.fvanaldewereld.rpgcompanion.**.ui.component.**.*"
+
             ]
 
             includes.addAll("com.fvanaldewereld.rpgcompanion.*")
