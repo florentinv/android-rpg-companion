@@ -9,7 +9,7 @@ data class ScenarioModel(
     val characters: CharactersModel? = null,
     val chapters: ChaptersModel? = null,
     val documentName: String? = "",
-    val information: InformationModel? = null,
+    val information: InformationModel? = InformationModel(),
     val places: PlacesModel? = null,
     val summary: SummaryModel? = null,
     val title: TitleModel? = null,

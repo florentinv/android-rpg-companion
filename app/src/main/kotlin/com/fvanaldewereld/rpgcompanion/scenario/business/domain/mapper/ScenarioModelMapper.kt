@@ -41,7 +41,7 @@ class ScenarioModelMapperImpl : ScenarioModelMapper {
 
     private var title: String? = null
     private var author: String? = null
-    private var nbPlayers = 0
+    private var nbPlayers = 1
     private var genres = emptyList<String>()
     private var themes = emptyList<String>()
 
@@ -105,10 +105,10 @@ class ScenarioModelMapperImpl : ScenarioModelMapper {
     }
 
     private fun setupScenarioElements() {
-        scenarioElements[TITLE] = TitleModel(value = title)
-        scenarioElements[AUTHOR] = AuthorModel(name = author)
+        scenarioElements[TITLE] = title?.let { TitleModel(value = it) }
+        scenarioElements[AUTHOR] = author?.let { AuthorModel(name = it) }
         scenarioElements[INFORMATION] = InformationModel(nbPlayers = nbPlayers, genres = genres, themes = themes)
-        scenarioElements[SUMMARY] = SummaryModel(text = DescriptionModel(summaryDescriptionParagraphs))
+        scenarioElements[SUMMARY] = if (summaryDescriptionParagraphs.isNotEmpty()) SummaryModel(text = DescriptionModel(summaryDescriptionParagraphs)) else null
         scenarioElements[CHARACTERS] = if (characters.isNotEmpty()) CharactersModel(characters = characters) else null
         scenarioElements[PLACES] = if (places.isNotEmpty()) PlacesModel(places = places) else null
         scenarioElements[CHAPTERS] = if (chapters.isNotEmpty()) ChaptersModel(chapters = chapters) else null

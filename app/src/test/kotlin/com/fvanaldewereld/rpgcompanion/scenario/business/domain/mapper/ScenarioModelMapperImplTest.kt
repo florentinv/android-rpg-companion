@@ -4,7 +4,7 @@ import com.fvanaldewereld.rpgcompanion.common.extensions.extractDocumentId
 import com.fvanaldewereld.rpgcompanion.scenario.ScenarioMockFactory
 import io.mockk.every
 import io.mockk.mockkStatic
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -17,6 +17,20 @@ class ScenarioModelMapperImplTest {
     @BeforeEach
     fun setUp() {
         scenarioModelMapper = ScenarioModelMapperImpl()
+    }
+
+    @Test
+    @DisplayName("GIVEN empty Document WHEN map THEN return empty ScenarioModel")
+    fun `GIVEN empty Document WHEN map THEN return empty ScenarioModel`() {
+        // GIVEN
+        mockkStatic("com.fvanaldewereld.rpgcompanion.common.extensions.UrlExtensionKt")
+        every { any<URL>().extractDocumentId() } returns ScenarioMockFactory.googleDocsDocumentId
+
+        // WHEN
+        val scenario = scenarioModelMapper.to(ScenarioMockFactory.emptyGoogleDocsDocument)
+
+        // THEN
+        assertEquals(scenario, ScenarioMockFactory.emptyScenarioModel)
     }
 
     @Test
