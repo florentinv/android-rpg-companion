@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">RPG Companion</string>
-    <string name="activity_homepage">RPG Companion - Homepage</string>
-    <string name="activity_scenario">RPG Companion - Scenario</string>
 
     // HOME PAGE
-    <string name="home_page_load_scenario_button_label">Load scenario</string>
+    <string name="home_page_welcome_text">Welcome to RPG Companion</string>
+    <string name="home_page_access_scenarios_button_label">Access to my scenarios</string>
 
     // SCENARIO DETAIL PAGE
     <string name="scenario_detail_page_author">From %1$s</string>

@@ -1,0 +1,3 @@
+package com.fvanaldewereld.rpgcompanion.scenarioDetail.business.domain.model
+
+interface ScenarioElement
