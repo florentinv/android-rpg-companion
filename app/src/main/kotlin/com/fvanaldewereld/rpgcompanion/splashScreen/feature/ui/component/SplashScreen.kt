@@ -1,9 +1,10 @@
 package com.fvanaldewereld.rpgcompanion.splashScreen.feature.ui.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Text
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -17,11 +18,13 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
 
 @Composable
-fun SplashScreen(onAnimationFinished : () -> Unit) {
+fun SplashScreen(onAnimationFinished: () -> Unit) {
     val composition by rememberLottieComposition(spec = LottieCompositionSpec.Asset("animation_ln0885pz.json"))
     val progress by animateLottieCompositionAsState(composition)
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colors.surface),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
@@ -31,7 +34,7 @@ fun SplashScreen(onAnimationFinished : () -> Unit) {
             modifier = Modifier.fillMaxSize(0.7F),
         )
         // Quand progress == 1.0 c'est qu el'animation est finie, on passe dans le callback
-        if(progress == 1.0f){
+        if (progress == 1.0f) {
             onAnimationFinished.invoke()
         }
 

@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -29,11 +30,18 @@ import com.fvanaldewereld.rpgcompanion.scenarioDetail.business.domain.model.Scen
 fun ScenarioListSuccess(
     scenarios: List<ScenarioModel>,
     onFabPressed: () -> Unit = {},
+    onBackButtonPressed: () -> Unit = {},
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
-                navigationIcon = { Icon(Icons.Filled.ArrowBack, "Back button") },
+                navigationIcon = {
+                    IconButton(
+                        onClick = onBackButtonPressed,
+                    ) {
+                        Icon(Icons.Filled.ArrowBack, "Back button")
+                    }
+                },
                 title = { Text("Scenario List") },
             )
         },
@@ -52,9 +60,11 @@ fun ScenarioListSuccess(
         ) {
             itemsIndexed(scenarios) { index, scenario ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Canvas(modifier = Modifier
-                        .padding(start = 8.dp, end = 8.dp)
-                        .size(6.dp)) {
+                    Canvas(
+                        modifier = Modifier
+                            .padding(start = 8.dp, end = 8.dp)
+                            .size(6.dp),
+                    ) {
                         drawCircle(Color.Black)
                     }
                     Text("Scenario n°$index", textDecoration = TextDecoration.Underline)
