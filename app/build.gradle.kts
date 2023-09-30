@@ -57,6 +57,7 @@ android {
 }
 
 dependencies {
+
     // Androidx
     implementation(libs.androidx.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
@@ -66,6 +67,9 @@ dependencies {
     // Koin
     implementation(libs.koin.core)
     implementation(libs.koin.android)
+
+    // Lottie
+    implementation(libs.lottie.compose)
 
     // Google
     implementation(libs.google.api.services.docs)

@@ -10,7 +10,8 @@ koverMerged {
                     "*Activity\$*",
                     ",**/di/**/*",
                     "com.fvanaldewereld.rpgcompanion.ui.theme.**.*",
-                    "com.fvanaldewereld.rpgcompanion.**.ui.component.**.*"
+                    "com.fvanaldewereld.rpgcompanion.**.ui.component.**.*",
+                    "com.fvanaldewereld.rpgcompanion.**.ui.theme.**.*"
 
             ]
 

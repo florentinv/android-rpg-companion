@@ -1,6 +1,7 @@
 [versions]
 # Libraries versions
 converterGson = "2.9.0"
+lottieCompose = "4.2.0"
 googleApiServicesDocs = "v1-rev61-1.25.0"
 googleAuthLibraryOauth2Http = "1.19.0"
 junit-junitJupiter = "5.9.1"
@@ -30,6 +31,7 @@ sonarqubePlugin = "4.3.1.3277"
 
 
 [libraries]
+lottie-compose = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottieCompose" }
 androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
 androidx-espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }

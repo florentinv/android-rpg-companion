@@ -1,6 +1,6 @@
 package com.fvanaldewereld.rpgcompanion.common.extensions
 
-import com.fvanaldewereld.rpgcompanion.scenario.ScenarioMockFactory
+import com.fvanaldewereld.rpgcompanion.scenarioDetail.ScenarioMockFactory
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
