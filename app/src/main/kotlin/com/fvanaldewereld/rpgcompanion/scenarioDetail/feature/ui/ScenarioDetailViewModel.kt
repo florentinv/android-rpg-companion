@@ -16,7 +16,7 @@ class ScenarioDetailViewModel(
 ) : ViewModel() {
 
     companion object {
-        private const val SCENARIO_UI_STATE_KEY = "SCENARIO_UI_STATE_KEY"
+        const val SCENARIO_UI_STATE_KEY = "SCENARIO_UI_STATE_KEY"
     }
 
     private val getScenarioByUrlUseCase: GetScenarioByUrlUseCase by GlobalContext.get().inject()

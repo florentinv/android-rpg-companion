@@ -28,11 +28,11 @@ class ScenarioListViewModel(
 
     init {
         if (scenarioListUiStateFlow.value is ScenarioListUiState.Loading) {
-            getScenario()
+            getScenarioList()
         }
     }
 
-    private fun getScenario() {
+    private fun getScenarioList() {
         CoroutineScope(Dispatchers.Default).launch {
             val scenarios = getScenarioListUseCase()
             savedStateHandle[SCENARIO_LIST_UI_STATE_KEY] = ScenarioListUiState.Success(scenarios = scenarios)

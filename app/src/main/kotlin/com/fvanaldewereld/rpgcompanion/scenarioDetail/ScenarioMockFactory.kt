@@ -82,6 +82,9 @@ object ScenarioMockFactory {
     val googleDocsUrl =
         URL("https://docs.google.com/document/d/1EAJa9JbA9tbGNbyv5AHIherdT34C4Ks6hKyIyDlZ7Os/edit#heading=h.6srcydx8zv6e")
 
+    val wrongGoogleDocsUrl =
+        URL("https://docs.google.com/document/...")
+
     val googleDocsDocumentId = "1EAJa9JbA9tbGNbyv5AHIherdT34C4Ks6hKyIyDlZ7Os"
 
     val googleDocsDocument: Document = Document()

@@ -14,6 +14,7 @@ import org.koin.dsl.module
 import org.koin.test.inject
 import org.mockito.Mockito
 import org.mockito.Mockito.mock
+import kotlin.test.assertFailsWith
 
 class GetScenarioByUrlUseCaseTest : BasicKoinTest() {
 
@@ -50,6 +51,19 @@ class GetScenarioByUrlUseCaseTest : BasicKoinTest() {
 
             // THEN
             assertEquals(scenario, ScenarioMockFactory.scenarioModel)
+        }
+
+
+    @Test()
+    @DisplayName("WHEN executing GetGdocsByUrlUseCase with wrong url THEN throw an NoSuchElementException")
+    fun `WHEN executing GetGdocsByUrlUseCase with wrong url THEN throw an NoSuchElementException`() =
+        runBlocking {
+
+            val exception = assertFailsWith<NoSuchElementException> {
+                getScenarioByUrlUseCase(ScenarioMockFactory.wrongGoogleDocsUrl)
+            }
+
+            assertEquals(exception.message, "No DocumentID in this URL.")
         }
 
 
