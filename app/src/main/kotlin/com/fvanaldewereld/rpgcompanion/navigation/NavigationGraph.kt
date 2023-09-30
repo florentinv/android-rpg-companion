@@ -30,10 +30,12 @@ fun NavigationGraph(
             popEnterTransition = popEnterTransition,
             popExitTransition = popExitTransition,
         ) {
-            SplashScreen {
-                navHostController.popBackStack()
-                navHostController.navigate(NavigationRoute.Home.route)
-            }
+            SplashScreen(
+                onAnimationFinished = {
+                    navHostController.popBackStack()
+                    navHostController.navigate(NavigationRoute.Home.route)
+                },
+            )
         }
         composable(
             route = NavigationRoute.Home.route,
@@ -42,9 +44,9 @@ fun NavigationGraph(
             popEnterTransition = popEnterTransition,
             popExitTransition = popExitTransition,
         ) {
-            HomeScreen {
-                navHostController.navigate(NavigationRoute.ScenarioList.route)
-            }
+            HomeScreen(
+                onGoToScenarioListButtonPressed = { navHostController.navigate(NavigationRoute.ScenarioList.route) },
+            )
         }
         composable(
             route = NavigationRoute.ScenarioList.route,
@@ -55,7 +57,7 @@ fun NavigationGraph(
         ) {
             ScenarioListScreen(
                 viewModel = viewModel(),
-                goToScenarioDetailPage = { navHostController.navigate(NavigationRoute.ScenarioDetail.route) },
+                onGoToScenarioDetailButtonPressed = { navHostController.navigate(NavigationRoute.ScenarioDetail.route) },
             ) {
                 navHostController.popBackStack()
             }
