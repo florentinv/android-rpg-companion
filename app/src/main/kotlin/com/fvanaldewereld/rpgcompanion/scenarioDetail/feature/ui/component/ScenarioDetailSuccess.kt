@@ -10,12 +10,9 @@ import androidx.compose.material.Chip
 import androidx.compose.material.ChipDefaults
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,6 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.fvanaldewereld.rpgcompanion.R
+import com.fvanaldewereld.rpgcompanion.common.ui.component.RpgCompanionTopAppBar
 import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
 import com.fvanaldewereld.rpgcompanion.common.ui.theme.Typography
 import com.fvanaldewereld.rpgcompanion.scenarioDetail.ScenarioMockFactory
@@ -40,15 +38,9 @@ fun ScenarioDetailSuccess(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(
-                navigationIcon = {
-                    IconButton(
-                        onClick = onBackButtonPressed,
-                    ) {
-                        Icon(Icons.Filled.ArrowBack, "Back button")
-                    }
-                },
-                title = { Text("Scenario Detail ${scenario.title?.value?.let { "- $it" }}") },
+            RpgCompanionTopAppBar(
+                title = "Scenario Detail ${scenario.title?.value?.let { "- $it" }}",
+                onBackButtonPressed = onBackButtonPressed,
             )
         },
     ) {

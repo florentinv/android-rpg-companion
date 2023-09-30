@@ -8,13 +8,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.fvanaldewereld.rpgcompanion.common.ui.component.RpgCompanionTopAppBar
 import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
 import com.fvanaldewereld.rpgcompanion.scenarioDetail.ScenarioMockFactory
 import com.fvanaldewereld.rpgcompanion.scenarioDetail.business.domain.model.ScenarioModel
@@ -34,15 +32,9 @@ fun ScenarioListSuccess(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(
-                navigationIcon = {
-                    IconButton(
-                        onClick = onBackButtonPressed,
-                    ) {
-                        Icon(Icons.Filled.ArrowBack, "Back button")
-                    }
-                },
-                title = { Text("Scenario List") },
+            RpgCompanionTopAppBar(
+                title = "Scenario List",
+                onBackButtonPressed = onBackButtonPressed,
             )
         },
         floatingActionButton = {
@@ -75,10 +67,9 @@ fun ScenarioListSuccess(
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
-fun ScenarioDetailSuccessPreview() {
+private fun ScenarioDetailSuccessPreview() {
     RPGCompanionTheme {
         ScenarioListSuccess(scenarios = listOf(ScenarioMockFactory.scenarioModel))
     }

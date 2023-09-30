@@ -8,7 +8,7 @@ import com.fvanaldewereld.rpgcompanion.scenarioList.feature.ui.ScenarioListViewM
 @Composable
 fun ScenarioListScreen(
     viewModel: ScenarioListViewModel,
-    goToScenarioDetailPage: () -> Unit = {},
+    onGoToScenarioDetailButtonPressed: () -> Unit = {},
     onBackButtonPressed: () -> Unit = {},
 ) {
     when (val uiState = viewModel.scenarioListUiStateFlow.collectAsStateWithLifecycle().value) {
@@ -18,7 +18,7 @@ fun ScenarioListScreen(
         is ScenarioListUiState.Success ->
             ScenarioListSuccess(
                 scenarios = uiState.scenarios,
-                onFabPressed = goToScenarioDetailPage,
+                onFabPressed = onGoToScenarioDetailButtonPressed,
                 onBackButtonPressed = onBackButtonPressed,
             )
     }
