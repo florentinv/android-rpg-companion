@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
-import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
@@ -30,10 +29,10 @@ fun SplashScreen(onAnimationFinished: () -> Unit) {
     ) {
         LottieAnimation(
             composition = composition,
-            iterations = LottieConstants.IterateForever,
+            iterations = 1,
             modifier = Modifier.fillMaxSize(0.7F),
         )
-        // Quand progress == 1.0 c'est qu el'animation est finie, on passe dans le callback
+
         if (progress == 1.0f) {
             onAnimationFinished.invoke()
         }
