@@ -1,17 +1,15 @@
 package com.fvanaldewereld.rpgcompanion
 
-
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.compose.rememberNavController
 import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
-import com.fvanaldewereld.rpgcompanion.home.feature.di.HOME_FEATURE_MODULE
+import com.fvanaldewereld.rpgcompanion.data.scenario.di.SCENARIO_DATA_MODULE
+import com.fvanaldewereld.rpgcompanion.lib.domain.scenario.di.SCENARIO_DOMAIN_LIB_MODULE
 import com.fvanaldewereld.rpgcompanion.navigation.NavigationGraph
-import com.fvanaldewereld.rpgcompanion.scenarioDetail.business.di.SCENARIO_DETAIL_BUSINESS_MODULE
-import com.fvanaldewereld.rpgcompanion.scenarioDetail.feature.di.SCENARIO_DETAIL_FEATURE_MODULE
-import com.fvanaldewereld.rpgcompanion.scenarioList.business.di.SCENARIO_LIST_BUSINESS_MODULE
-import com.fvanaldewereld.rpgcompanion.scenarioList.feature.di.SCENARIO_LIST_FEATURE_MODULE
+import com.fvanaldewereld.rpgcompanion.ui.scenario.detail.di.SCENARIO_UI_DETAIL_MODULE
+import com.fvanaldewereld.rpgcompanion.ui.scenario.list.di.SCENARIO_UI_LIST_MODULE
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -21,11 +19,10 @@ class MainActivity : ComponentActivity() {
 
         startKoin {
             androidContext(this@MainActivity)
-            modules(HOME_FEATURE_MODULE)
-            modules(SCENARIO_DETAIL_BUSINESS_MODULE)
-            modules(SCENARIO_DETAIL_FEATURE_MODULE)
-            modules(SCENARIO_LIST_BUSINESS_MODULE)
-            modules(SCENARIO_LIST_FEATURE_MODULE)
+            modules(SCENARIO_DOMAIN_LIB_MODULE)
+            modules(SCENARIO_DATA_MODULE)
+            modules(SCENARIO_UI_DETAIL_MODULE)
+            modules(SCENARIO_UI_LIST_MODULE)
         }
 
         setContent {
@@ -35,5 +32,4 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-
 }

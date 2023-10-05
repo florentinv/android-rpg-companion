@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    // SCENARIO DETAIL PAGE
+    <string name="scenario_detail_page_author">From %1$s</string>
+</resources>

@@ -1,10 +1,25 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+apply(from = "${project.rootDir}/gradle/ktlint.gradle")
+apply(from = "${project.rootDir}/gradle/sonarqube.gradle")
+apply(from = "${project.rootDir}/gradle/kover.gradle")
+
 plugins {
-    alias(libs.plugins.jlleitschuh.ktlint) apply false
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.jetbrains.kotlin) apply false
-    alias(libs.plugins.jetbrains.kotlinx.kover) apply false
+    alias(libs.plugins.jlleitschuh.ktlint) apply false
+    alias(libs.plugins.module.dependency.graph)
+    alias(libs.plugins.org.jetbrains.kotlin.jvm) apply false
     alias(libs.plugins.sonarqube) apply false
+}
+
+buildscript {
+    dependencies {
+        classpath(libs.jetbrains.kotlinx.kover)
+    }
+}
+
+allprojects {
+    apply(plugin = "kover")
 }

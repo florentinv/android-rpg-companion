@@ -15,7 +15,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "RPG Companion"
-include(":app")
 
 buildCache {
     local {
@@ -23,3 +22,15 @@ buildCache {
         removeUnusedEntriesAfterDays = 30
     }
 }
+
+include(
+    ":app",
+    ":common",
+    ":common-test",
+    ":mock-factory",
+    ":scenario:scenario-data",
+    ":scenario:scenario-domain-lib",
+    ":scenario:scenario-domain-api",
+    ":scenario:scenario-ui-detail",
+    ":scenario:scenario-ui-list",
+)
