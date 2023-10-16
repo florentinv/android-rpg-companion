@@ -17,7 +17,7 @@ internal fun RPGCompanionNavigation() {
         // This lambda navigates back in the navigation stack.
         val navigateBack: () -> Unit = { navController.navigateUp() }
 
-        // This lambda navigates to a specified route
+        // This lambda navigates to a specified route.
         val navigateTo: (navRoute: NavigationRoute) -> Unit = { navRoute ->
             navController.navigate(navRoute.route)
         }
