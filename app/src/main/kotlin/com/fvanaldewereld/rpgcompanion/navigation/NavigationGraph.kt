@@ -10,10 +10,10 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.fvanaldewereld.rpgcompanion.home.feature.ui.component.HomeScreen
-import com.fvanaldewereld.rpgcompanion.scenarioDetail.feature.ui.component.ScenarioDetailScreen
-import com.fvanaldewereld.rpgcompanion.scenarioList.feature.ui.component.ScenarioListScreen
-import com.fvanaldewereld.rpgcompanion.splashScreen.feature.ui.component.SplashScreen
+import com.fvanaldewereld.rpgcompanion.home.ui.components.HomeScreen
+import com.fvanaldewereld.rpgcompanion.splashScreen.feature.ui.components.SplashScreen
+import com.fvanaldewereld.rpgcompanion.ui.scenario.detail.components.ScenarioDetailScreen
+import com.fvanaldewereld.rpgcompanion.ui.scenario.list.components.ScenarioListScreen
 
 @Composable
 fun NavigationGraph(
@@ -77,7 +77,6 @@ fun NavigationGraph(
         }
     }
 }
-
 
 private val enterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition = {
     slideIntoContainer(

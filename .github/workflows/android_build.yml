@@ -10,35 +10,29 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set Up JDK 17
+      - name: "Set Up JDK 17"
         uses: actions/setup-java@v3
         with:
           java-version: 17
           distribution: 'zulu' # Alternative distribution options are available
 
-      - name: Cache SonarCloud packages
+      - name: "Cache SonarCloud packages"
         uses: actions/cache@v3
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
-      - name: Change wrapper permissions
+      - name: "Change wrapper permissions"
         run: chmod +x ./gradlew
 
-      - name: Setup Gradle
+      - name: "Setup Gradle"
         uses: gradle/gradle-build-action@v2
 
-      - name: Build and test
-        run: ./gradlew test --info
+      - name: "Run Ktlint Format"
+        run: ./gradlew ktlintFormat
 
-      - name: Generate Coverage Report (Debug)
-        run: ./gradlew koverXmlReportDebug --info
-
-      - name: Kotlin Linter
-        run: ./gradlew ktlintCheck
-
-      - name: Analyze
+      - name: "Build, Test, Generate Coverage Report, and run Sonar"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

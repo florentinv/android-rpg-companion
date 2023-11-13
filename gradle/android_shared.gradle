@@ -1,0 +1,36 @@
+apply plugin: "kotlin-android"
+
+android {
+
+    compileSdk libs.versions.android.compile.sdk.get().toInteger()
+
+    defaultConfig {
+        minSdk libs.versions.android.min.sdk.get().toInteger()
+        targetSdk libs.versions.android.target.sdk.get().toInteger()
+        versionName "1.0"
+        versionCode 1
+    }
+
+    sourceSets {
+        main.kotlin.srcDirs += 'src/main/kotlin'
+        debug.kotlin.srcDirs += 'src/debug/kotlin'
+        release.kotlin.srcDirs += 'src/release/kotlin'
+        test.kotlin.srcDirs += 'src/test/kotlin'
+        androidTest.kotlin.srcDirs += 'src/androidTest/kotlin'
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17.toString()
+    }
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1,DEPENDENCIES,LICENSE,LICENSE.txt,license.txt,NOTICE,NOTICE.txt,*.kotlin_module}"
+        }
+    }
+}

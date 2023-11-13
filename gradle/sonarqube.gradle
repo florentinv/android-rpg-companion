@@ -1,7 +1,7 @@
 apply plugin: libs.plugins.sonarqube.get().pluginId
 
 afterEvaluate {
-    sonarqube {
+    sonar {
         androidVariant 'debug'
         properties {
             property "sonar.projectName", "android-rpg-companion"
@@ -12,16 +12,17 @@ afterEvaluate {
             property "sonar.tests", "src/test, src/androidTest"
             property "sonar.test.inclusions", "**/androidTest"
             property "sonar.java.coveragePlugin", "jacoco"
-            property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/kover/reportDebug.xml"
+            property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/kover/merged/xml/report.xml"
             // Please add exclusions here to exclude classes from sonarqube coverage reports
             // The exclusions in the kover.gradle file only exclude classes from coverage computation but they still appear on the sonarqube interface
             property "sonar.coverage.exclusions",
                     "**/*Fragment*" +
                             ",**/*Activity*" +
                             ",**/di/**/*" +
-                            ",**/com/fvanaldewereld/rpgcompanion/ui/theme/**/*" +
-                            ",**/com/fvanaldewereld/rpgcompanion/**/ui/component/**/*" +
-                            ",**/com/fvanaldewereld/rpgcompanion/**/ui/theme/**/*"
+                            ",**/com/fvanaldewereld/rpgcompanion/ui/component/**/*" +
+                            ",**/com/fvanaldewereld/rpgcompanion/ui/theme/**/*"
         }
     }
 }
+
+project.tasks.sonar.dependsOn "koverMergedXmlReport"
