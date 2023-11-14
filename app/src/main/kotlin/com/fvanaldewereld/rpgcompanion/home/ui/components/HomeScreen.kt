@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.fvanaldewereld.rpgcompanion.R
 
 @Composable
-fun HomeScreen(
+internal fun HomeScreen(
     onGoToScenarioListButtonPressed: () -> Unit,
 ) {
     Scaffold(
@@ -44,7 +44,7 @@ fun HomeScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+internal fun DefaultPreview() {
     HomeScreen(
         onGoToScenarioListButtonPressed = {},
     )

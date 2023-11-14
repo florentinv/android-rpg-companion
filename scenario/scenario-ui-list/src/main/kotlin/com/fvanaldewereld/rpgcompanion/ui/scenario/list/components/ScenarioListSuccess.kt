@@ -25,7 +25,7 @@ import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
 import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioModelMockFactory
 
 @Composable
-fun ScenarioListSuccess(
+internal fun ScenarioListSuccess(
     scenarios: List<ScenarioModel>,
     onFabPressed: () -> Unit = {},
     onBackButtonPressed: () -> Unit = {},

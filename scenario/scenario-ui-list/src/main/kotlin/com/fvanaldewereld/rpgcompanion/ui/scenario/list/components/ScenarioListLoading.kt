@@ -15,7 +15,7 @@ import com.fvanaldewereld.rpgcompanion.common.ui.component.RpgCompanionTopAppBar
 import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
 
 @Composable
-fun ScenarioListLoading() {
+internal fun ScenarioListLoading() {
     Scaffold(
         topBar = { RpgCompanionTopAppBar(title = "Scenario List") },
     ) {

@@ -15,7 +15,7 @@ import com.fvanaldewereld.rpgcompanion.common.ui.component.RpgCompanionTopAppBar
 import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
 
 @Composable
-fun ScenarioDetailLoading() {
+internal fun ScenarioDetailLoading() {
     Scaffold(
         topBar = {
             RpgCompanionTopAppBar(title = "Scenario Detail")
@@ -37,7 +37,7 @@ fun ScenarioDetailLoading() {
 
 @Preview(showBackground = true)
 @Composable
-fun ScenarioDetailLoadingPreview() {
+internal fun ScenarioDetailLoadingPreview() {
     RPGCompanionTheme {
         ScenarioDetailLoading()
     }

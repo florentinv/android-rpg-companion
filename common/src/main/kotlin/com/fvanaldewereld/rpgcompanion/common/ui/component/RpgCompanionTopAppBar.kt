@@ -31,7 +31,7 @@ fun RpgCompanionTopAppBar(
 
 @Preview
 @Composable
-fun RpgCompanionTopBarPreview() {
+private fun RpgCompanionTopBarPreview() {
     RPGCompanionTheme {
         RpgCompanionTopAppBar(
             title = "Title",

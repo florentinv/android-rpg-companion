@@ -31,7 +31,7 @@ import com.fvanaldewereld.rpgcompanion.ui.scenario.detail.R
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalLayoutApi::class)
 @Composable
-fun ScenarioDetailSuccess(
+internal fun ScenarioDetailSuccess(
     scenario: ScenarioModel,
     onBackButtonPressed: () -> Unit = {},
 ) {
@@ -226,7 +226,7 @@ fun ScenarioDetailSuccess(
 
 @Preview(showBackground = true)
 @Composable
-fun ScenarioDetailSuccessPreview() {
+internal fun ScenarioDetailSuccessPreview() {
     com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme {
         ScenarioDetailSuccess(scenario = ScenarioModelMockFactory.scenarioModel)
     }
