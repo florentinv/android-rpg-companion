@@ -9,6 +9,8 @@ The first feature consists in offering an original and intuitive navigation expe
 ## Modules
 The app has been modularized in order to respect clean architecture.
 
+![dependency graph](documentation/graph.png)
+
 ### `app`
 Contains the main elements like navigation, home page. This is also where we use all Koin modules.
 
