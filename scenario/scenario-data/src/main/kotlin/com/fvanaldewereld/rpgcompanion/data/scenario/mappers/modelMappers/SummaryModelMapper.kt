@@ -1,4 +1,4 @@
-package com.fvanaldewereld.rpgcompanion.data.scenario.mappers
+package com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers
 
 import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.SummaryModel
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.SummaryDto

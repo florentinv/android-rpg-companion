@@ -1,30 +1,38 @@
 package com.fvanaldewereld.rpgcompanion.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.fvanaldewereld.rpgcompanion.home.ui.components.HomeScreen
 import com.fvanaldewereld.rpgcompanion.splashScreen.feature.ui.components.SplashScreen
+import com.fvanaldewereld.rpgcompanion.ui.scenario.detail.ScenarioDetailViewModel
 import com.fvanaldewereld.rpgcompanion.ui.scenario.detail.components.ScenarioDetailScreen
+import com.fvanaldewereld.rpgcompanion.ui.scenario.list.ScenarioListViewModel
 import com.fvanaldewereld.rpgcompanion.ui.scenario.list.components.ScenarioListScreen
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun RPGCompanionNavigation() {
-    val navController = rememberNavController()
+    val navHostController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = NavigationRoute.Splash.route) {
+    NavHost(navController = navHostController, startDestination = NavigationRoute.Splash.route) {
         // This lambda navigates back in the navigation stack.
-        val navigateBack: () -> Unit = { navController.navigateUp() }
+        val navigateBack: () -> Unit = { navHostController.navigateUp() }
 
         // This lambda navigates to a specified route.
         val navigateTo: (navRoute: NavigationRoute) -> Unit = { navRoute ->
-            navController.navigate(navRoute.route)
+            navHostController.navigate(navRoute.route)
+        }
+
+        // This lambda navigates to a specified route.
+        val navigateToString: (navRoute: String) -> Unit = { navRoute ->
+            navHostController.navigate(navRoute)
         }
 
         // This lambda navigates to a route while popping all destinations up to a specified route
         val navigatePopAllTo: (navRoute: NavigationRoute, navRouteToPopUpTo: NavigationRoute) -> Unit = { navRoute, navRouteToPopUpTo ->
-            navController.navigate(navRoute.route) {
+            navHostController.navigate(navRoute.route) {
                 // Configure popping behavior
                 popUpTo(navRouteToPopUpTo.route) { inclusive = true }
             }
@@ -43,16 +51,20 @@ internal fun RPGCompanionNavigation() {
         }
 
         animatedComposable(route = NavigationRoute.ScenarioList.route) {
+            val viewModel: ScenarioListViewModel = koinViewModel()
             ScenarioListScreen(
-                viewModel = viewModel(),
-                onGoToScenarioDetailButtonPressed = { navigateTo(NavigationRoute.ScenarioDetail) },
+                viewModel = viewModel,
                 onBackButtonPressed = navigateBack,
+                onItemPressed = { scenarioId -> navigateToString(NavigationRoute.ScenarioDetail.createRoute(scenarioId = scenarioId)) },
             )
         }
 
-        animatedComposable(route = NavigationRoute.ScenarioDetail.route) {
+        composable(
+            route = NavigationRoute.ScenarioDetail.route,
+        ) {
+            val viewModel: ScenarioDetailViewModel = koinViewModel()
             ScenarioDetailScreen(
-                viewModel = viewModel(),
+                viewModel = viewModel,
                 onBackButtonPressed = navigateBack,
             )
         }

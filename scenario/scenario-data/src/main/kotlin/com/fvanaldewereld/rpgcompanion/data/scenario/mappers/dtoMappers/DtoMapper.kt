@@ -1,4 +1,4 @@
-package com.fvanaldewereld.rpgcompanion.data.scenario.mappers
+package com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dtoMappers
 
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.Dto
 

@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ScenarioModel(
+    val id: Long? = null,
     val author: AuthorModel? = null,
     val characters: CharactersModel? = null,
     val chapters: ChaptersModel? = null,

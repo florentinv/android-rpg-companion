@@ -12,6 +12,7 @@ plugins {
     alias(libs.plugins.module.dependency.graph)
     alias(libs.plugins.org.jetbrains.kotlin.jvm) apply false
     alias(libs.plugins.sonarqube) apply false
+    alias(libs.plugins.ksp) apply false
 }
 
 buildscript {

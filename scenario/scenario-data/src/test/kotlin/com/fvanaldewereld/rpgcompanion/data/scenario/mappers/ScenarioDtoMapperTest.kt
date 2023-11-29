@@ -1,5 +1,7 @@
 package com.fvanaldewereld.rpgcompanion.data.scenario.mappers
 
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dtoMappers.ScenarioDtoMapper
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dtoMappers.ScenarioDtoMapperImpl
 import com.fvanaldewereld.rpgcompanion.data.scenario.sources.googleDocs.extensions.extractGoogleDocumentId
 import com.fvanaldewereld.rpgcompanion.mockFactory.GoogleDocsMockFactory
 import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioDtoMockFactory

@@ -2,7 +2,7 @@ package com.fvanaldewereld.rpgcompanion.data.scenario.repositories
 
 import BasicKoinTest
 import com.fvanaldewereld.rpgcompanion.api.domain.scenario.repositories.GoogleDocsRepository
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.ScenarioModelMapper
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.ScenarioModelMapper
 import com.fvanaldewereld.rpgcompanion.data.scenario.sources.googleDocs.GoogleDocsDataSource
 import com.fvanaldewereld.rpgcompanion.mockFactory.GoogleDocsMockFactory
 import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioDtoMockFactory

@@ -1,5 +1,7 @@
 package com.fvanaldewereld.rpgcompanion.data.scenario.mappers
 
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.InformationModelMapper
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.InformationModelMapperImpl
 import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioDtoMockFactory
 import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioModelMockFactory
 import org.junit.jupiter.api.Assertions.assertEquals

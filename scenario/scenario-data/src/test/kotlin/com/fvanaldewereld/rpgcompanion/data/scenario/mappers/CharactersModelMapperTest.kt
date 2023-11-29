@@ -1,6 +1,9 @@
 package com.fvanaldewereld.rpgcompanion.data.scenario.mappers
 
 import BasicKoinTest
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.CharacterModelMapper
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.CharactersModelMapper
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.CharactersModelMapperImpl
 import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioDtoMockFactory
 import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioModelMockFactory
 import org.junit.jupiter.api.Assertions.assertEquals

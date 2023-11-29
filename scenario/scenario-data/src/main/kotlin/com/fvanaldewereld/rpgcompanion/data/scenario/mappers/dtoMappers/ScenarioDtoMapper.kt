@@ -1,4 +1,4 @@
-package com.fvanaldewereld.rpgcompanion.data.scenario.mappers
+package com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dtoMappers
 
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.AuthorDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.ChapterDto
@@ -9,8 +9,8 @@ import com.fvanaldewereld.rpgcompanion.data.scenario.dto.DescriptionDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.InformationDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.PlaceEntity
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.PlacesDto
-import com.fvanaldewereld.rpgcompanion.data.scenario.dto.ScenarioElementDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.ScenarioDto
+import com.fvanaldewereld.rpgcompanion.data.scenario.dto.ScenarioElementDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.SummaryDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.TextType
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.TitleDto
