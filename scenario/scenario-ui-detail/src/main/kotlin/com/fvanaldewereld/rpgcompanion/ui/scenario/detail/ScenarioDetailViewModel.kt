@@ -38,7 +38,7 @@ class ScenarioDetailViewModel(
 
     private fun getScenarioDetail() {
         viewModelScope.launch {
-            withContext(dispatchers.io()) {
+            withContext(dispatchers.default()) {
                 // TODO Catch SQLiteException
                 kotlin.runCatching { getScenarioByDocumentNameUseCase(scenarioId.toLong()) }
                     .onSuccess { scenarioModel ->

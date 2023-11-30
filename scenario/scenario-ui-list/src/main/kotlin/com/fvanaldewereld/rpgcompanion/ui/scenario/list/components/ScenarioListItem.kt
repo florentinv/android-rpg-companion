@@ -5,6 +5,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,11 +26,12 @@ internal fun ScenarioListItem(
     id: Long,
     scenario: ScenarioModel,
     modifier: Modifier = Modifier,
-    onItemPressed: (scenarioId: Long) -> Unit = {},
+    goToScenarioDetail: (scenarioId: Long) -> Unit = {},
+    deleteScenario: (scenarioId: Long) -> Unit = {},
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier.clickable { onItemPressed(id) },
+        modifier = modifier.clickable { goToScenarioDetail(id) },
     ) {
         Canvas(
             modifier = Modifier
@@ -40,6 +45,15 @@ internal fun ScenarioListItem(
         Text(" / ${scenario.chapters?.chapters?.size} chap.")
         Text(" / ${scenario.characters?.characters?.size} char.")
         Text(" / ${scenario.places?.places?.size} pl.")
+        IconButton(
+            onClick = { deleteScenario(id) },
+            content = {
+                Icon(
+                    imageVector = Icons.Filled.Delete,
+                    contentDescription = "delete scenario n°$id"
+                )
+            },
+        )
     }
 }
 

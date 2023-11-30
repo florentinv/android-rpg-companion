@@ -10,7 +10,7 @@ class ScenarioDao {
     private val characterDao: CharacterDao by GlobalContext.get().inject()
     private val placeDao: PlaceDao by GlobalContext.get().inject()
 
-    fun insertScenario(scenario: Scenario) {
+    fun insertScenario(scenario: Scenario) : Long {
         val scenarioBaseId = scenarioBaseDao.insertScenarioBase(scenario.scenarioBase)
         scenario.chapters?.let { chapters ->
             run {
@@ -30,13 +30,15 @@ class ScenarioDao {
                 placeDao.insertAll(places)
             }
         }
+        return scenarioBaseId
     }
 
-    fun deleteScenario(scenario: Scenario) {
+    fun deleteScenario(scenario: Scenario) : Long{
         scenarioBaseDao.deleteScenarioBase(scenarioBase = scenario.scenarioBase)
         scenario.chapters?.map { chapterDao.delete(it) }
         scenario.characters?.map { characterDao.delete(it) }
         scenario.places?.map { placeDao.delete(it) }
+        return scenario.scenarioBase.id
     }
 
     fun getAllScenarios(): List<Scenario> = scenarioBaseDao.getAllScenariosBase()

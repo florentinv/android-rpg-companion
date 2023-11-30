@@ -27,7 +27,7 @@ fun ScenarioListScreen(
     viewModel: ScenarioListViewModel,
     modifier: Modifier = Modifier,
     onBackButtonPressed: () -> Unit = {},
-    onItemPressed: (id: Long) -> Unit = {},
+    goToScenarioDetail: (id: Long) -> Unit = {},
 ) {
     val sheetState = rememberModalBottomSheetState()
     val scope = rememberCoroutineScope()
@@ -49,7 +49,11 @@ fun ScenarioListScreen(
                 is ScenarioListUiState.Error -> ScenarioListError(errorMessage = uiState.errorMessage)
                 is ScenarioListUiState.Loading -> ScenarioListLoading()
                 is ScenarioListUiState.NoResult -> ScenarioListNoResult()
-                is ScenarioListUiState.Success -> ScenarioListSuccess(scenarios = uiState.scenarios, onItemPressed = onItemPressed)
+                is ScenarioListUiState.Success -> ScenarioListSuccess(
+                    scenarios = uiState.scenarios,
+                    goToScenarioDetail = goToScenarioDetail,
+                    deleteScenario = viewModel::deleteScenario,
+                )
             }
         }
     }
@@ -59,9 +63,13 @@ fun ScenarioListScreen(
             sheetState = sheetState,
         ) {
             ScenarioListBottomSheet(
-                onSubmitButtonPressed = {
+                goToScenarioDetail = goToScenarioDetail,
+                addScenario = viewModel::addScenario,
+                hideBottomSheet = {
                     scope
-                        .launch { sheetState.hide() }
+                        .launch {
+                            sheetState.hide()
+                        }
                         .invokeOnCompletion {
                             if (!sheetState.isVisible) {
                                 showBottomSheet = false

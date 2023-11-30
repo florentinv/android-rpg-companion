@@ -25,11 +25,14 @@ import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
 import com.fvanaldewereld.rpgcompanion.common.ui.theme.Typography
 import com.fvanaldewereld.rpgcompanion.ui.scenario.list.R
 
+//https://docs.google.com/document/d/1YMuTjXvyU_sZFOu8PlvX1DNlJ7t1h7ne4yQvDSWHE54/edit?usp=sharing
 @SuppressLint("UnrememberedMutableState")
 @Composable
 internal fun ScenarioListBottomSheet(
-    onSubmitButtonPressed: () -> Unit,
     modifier: Modifier = Modifier,
+    goToScenarioDetail: (scenarioId: Long) -> Unit = {},
+    addScenario: (scenarioUrl: String, (scenarioId: Long) -> Unit) -> Unit = { _, _ -> run {} },
+    hideBottomSheet: () -> Unit = {},
 ) {
     var inputURL by remember { mutableStateOf("") }
     Column(
@@ -49,7 +52,10 @@ internal fun ScenarioListBottomSheet(
             placeholder = { Text(stringResource(R.string.scenarioList_success_bottomSheet_placeholder)) },
         )
         Button(
-            onClick = onSubmitButtonPressed,
+            onClick = {
+                hideBottomSheet()
+                addScenario(inputURL, goToScenarioDetail)
+            },
         ) {
             Text(stringResource(R.string.scenarioList_success_bottomSheet_submitButton_label))
         }
@@ -60,6 +66,6 @@ internal fun ScenarioListBottomSheet(
 @Composable
 private fun ScenarioListBottomSheetPreview() {
     RPGCompanionTheme {
-        ScenarioListBottomSheet(onSubmitButtonPressed = {})
+        ScenarioListBottomSheet()
     }
 }

@@ -15,7 +15,8 @@ import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioModelMockFactory
 internal fun ScenarioListSuccess(
     scenarios: List<ScenarioModel>,
     modifier: Modifier = Modifier,
-    onItemPressed: (scenarioId: Long) -> Unit = {},
+    goToScenarioDetail: (scenarioId: Long) -> Unit = {},
+    deleteScenario: (scenarioId: Long) -> Unit = {},
 ) {
     LazyColumn(
         modifier = modifier
@@ -26,7 +27,8 @@ internal fun ScenarioListSuccess(
                 ScenarioListItem(
                     id = scenarioId,
                     scenario = scenario,
-                    onItemPressed = onItemPressed,
+                    goToScenarioDetail = goToScenarioDetail,
+                    deleteScenario = deleteScenario,
                 )
             }
         }

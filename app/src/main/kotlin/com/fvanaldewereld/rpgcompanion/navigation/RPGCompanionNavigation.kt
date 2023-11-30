@@ -2,7 +2,6 @@ package com.fvanaldewereld.rpgcompanion.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.fvanaldewereld.rpgcompanion.home.ui.components.HomeScreen
 import com.fvanaldewereld.rpgcompanion.splashScreen.feature.ui.components.SplashScreen
@@ -48,11 +47,11 @@ internal fun RPGCompanionNavigation() {
             ScenarioListScreen(
                 viewModel = koinViewModel(),
                 onBackButtonPressed = ::navigateBack,
-                onItemPressed = { scenarioId -> navigateTo(NavigationRoute.ScenarioDetail.createRoute(scenarioId = scenarioId)) },
+                goToScenarioDetail = { scenarioId -> navigateTo(NavigationRoute.ScenarioDetail.createRoute(scenarioId = scenarioId)) },
             )
         }
 
-        composable(
+        animatedComposable(
             route = NavigationRoute.ScenarioDetail.route,
         ) {
             ScenarioDetailScreen(
