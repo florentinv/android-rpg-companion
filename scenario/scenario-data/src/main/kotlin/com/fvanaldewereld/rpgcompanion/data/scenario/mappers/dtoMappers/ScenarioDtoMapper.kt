@@ -7,7 +7,7 @@ import com.fvanaldewereld.rpgcompanion.data.scenario.dto.CharacterDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.CharactersDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.DescriptionDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.InformationDto
-import com.fvanaldewereld.rpgcompanion.data.scenario.dto.PlaceEntity
+import com.fvanaldewereld.rpgcompanion.data.scenario.dto.PlaceDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.PlacesDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.ScenarioDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.ScenarioElementDto
@@ -24,11 +24,8 @@ private const val SUMMARY = "SUMMARY"
 private const val CHARACTERS = "CHARACTERS"
 private const val PLACES = "PLACES"
 private const val CHAPTERS = "CHAPTERS"
-
 private const val NUMBER_OF_PLAYERS = "NUMBER OF PLAYERS"
-
 private const val GENRES = "GENRES"
-
 private const val THEMES = "THEMES"
 
 interface ScenarioDtoMapper : DtoMapper<Document, ScenarioDto>
@@ -49,7 +46,7 @@ internal class ScenarioDtoMapperImpl : ScenarioDtoMapper {
     private var lastCharacterName: String? = null
     private val lastCharacterDescriptionParagraphs = mutableListOf<String>()
 
-    private val places = mutableListOf<PlaceEntity>()
+    private val places = mutableListOf<PlaceDto>()
     private var lastPlaceName: String? = null
     private val lastPlaceDescriptionParagraphs = mutableListOf<String>()
 
@@ -225,7 +222,7 @@ internal class ScenarioDtoMapperImpl : ScenarioDtoMapper {
     private fun addLastPlace() {
         if (lastPlaceName != null) {
             places.add(
-                PlaceEntity(
+                PlaceDto(
                     name = lastPlaceName.toString(),
                     description = DescriptionDto(paragraphs = lastPlaceDescriptionParagraphs.toList()),
                 ),

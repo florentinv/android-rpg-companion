@@ -16,7 +16,7 @@ internal fun ScenarioListSuccess(
     scenarios: List<ScenarioModel>,
     modifier: Modifier = Modifier,
     goToScenarioDetail: (scenarioId: Long) -> Unit = {},
-    deleteScenario: (scenarioId: Long) -> Unit = {},
+    updateDeletingScenario: (scenarioModel: ScenarioModel) -> Unit = {},
 ) {
     LazyColumn(
         modifier = modifier
@@ -28,7 +28,7 @@ internal fun ScenarioListSuccess(
                     id = scenarioId,
                     scenario = scenario,
                     goToScenarioDetail = goToScenarioDetail,
-                    deleteScenario = deleteScenario,
+                    deleteScenario = { updateDeletingScenario(scenario) },
                 )
             }
         }

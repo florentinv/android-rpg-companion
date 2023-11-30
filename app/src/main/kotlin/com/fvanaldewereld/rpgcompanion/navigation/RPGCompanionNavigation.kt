@@ -51,9 +51,7 @@ internal fun RPGCompanionNavigation() {
             )
         }
 
-        animatedComposable(
-            route = NavigationRoute.ScenarioDetail.route,
-        ) {
+        animatedComposable(route = NavigationRoute.ScenarioDetail.route) {
             ScenarioDetailScreen(
                 viewModel = koinViewModel(),
                 onBackButtonPressed = ::navigateBack,

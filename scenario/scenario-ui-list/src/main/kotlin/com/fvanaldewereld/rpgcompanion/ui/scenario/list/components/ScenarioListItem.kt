@@ -31,7 +31,7 @@ internal fun ScenarioListItem(
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier.clickable { goToScenarioDetail(id) },
+        modifier = modifier.clickable { goToScenarioDetail(id) }.padding(vertical = 10.dp),
     ) {
         Canvas(
             modifier = Modifier

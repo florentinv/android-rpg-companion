@@ -35,9 +35,9 @@ class PlacesModelMapperTest: BasicKoinTest( ){
     @Test
     fun `GIVEN mock PlaceModelMapper WHEN map PlacesEntity THEN return PlacesModel`() {
         // GIVEN
-        Mockito.`when`(mockPlaceModelMapper.to(ScenarioDtoMockFactory.placeEntity1))
+        Mockito.`when`(mockPlaceModelMapper.to(ScenarioDtoMockFactory.placeDto1))
             .thenReturn(ScenarioModelMockFactory.placeModel1)
-        Mockito.`when`(mockPlaceModelMapper.to(ScenarioDtoMockFactory.placeEntity2))
+        Mockito.`when`(mockPlaceModelMapper.to(ScenarioDtoMockFactory.placeDto2))
             .thenReturn(ScenarioModelMockFactory.placeModel2)
         // WHEN
         val scenario = placesModelMapper.to(ScenarioDtoMockFactory.placesDto)

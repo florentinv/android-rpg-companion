@@ -39,7 +39,7 @@ class PlaceModelMapperTest : BasicKoinTest() {
             .thenReturn(ScenarioModelMockFactory.placeDescriptionModel1)
 
         // WHEN
-        val scenario = placeModelMapper.to(ScenarioDtoMockFactory.placeEntity1)
+        val scenario = placeModelMapper.to(ScenarioDtoMockFactory.placeDto1)
 
         // THEN
         assertEquals(scenario, ScenarioModelMockFactory.placeModel1)

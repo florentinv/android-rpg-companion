@@ -70,7 +70,7 @@ val SCENARIO_DATA_MODULE = module {
     single<TitleModelMapper> { TitleModelMapperImpl() }
 
     // DtoMapper
-    single<ScenarioDtoMapper> { ScenarioDtoMapperImpl() }
+    factory<ScenarioDtoMapper> { ScenarioDtoMapperImpl() }
 
     // DbObjectMapper
     single<ScenarioMapper> { ScenarioCompleteMapperImpl() }
@@ -81,12 +81,12 @@ val SCENARIO_DATA_MODULE = module {
 
 
     // Sources
-    single<GoogleDocsService> {
+    factory<GoogleDocsService> {
         GoogleDocsService(
             androidContext(),
         )
     }
-    single<GoogleDocsDataSource> { GoogleDocsDataSourceImpl() }
+    factory<GoogleDocsDataSource> { GoogleDocsDataSourceImpl() }
     single<AppDatabase> {
         Room.databaseBuilder(
             androidContext(),
@@ -101,6 +101,6 @@ val SCENARIO_DATA_MODULE = module {
     single<PlaceDao> { get<AppDatabase>().placeDao() }
 
 // Repositories
-    single<GoogleDocsRepository> { GoogleDocsRepositoryImpl() }
+    factory<GoogleDocsRepository> { GoogleDocsRepositoryImpl() }
     single<DbScenarioRepository> { LocalDbScenarioRepositoryImpl() }
 }

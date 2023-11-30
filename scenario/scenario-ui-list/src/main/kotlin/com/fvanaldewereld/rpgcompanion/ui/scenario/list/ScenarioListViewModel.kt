@@ -25,7 +25,6 @@ class ScenarioListViewModel(
     private val addScenarioUseCase: AddScenarioUseCase by GlobalContext.get().inject()
     private val deleteScenarioUseCase: DeleteScenarioUseCase by GlobalContext.get().inject()
     private val getScenarioListUseCase: GetScenarioListUseCase by GlobalContext.get().inject()
-    private val getScenarioByUrlUseCase: GetScenarioByUrlUseCase by GlobalContext.get().inject()
     private val dispatchers: KDispatchers by GlobalContext.get().inject()
 
     var scenarioListUiStateFlow: StateFlow<ScenarioListUiState> =
@@ -40,8 +39,11 @@ class ScenarioListViewModel(
         }
     }
 
+    @SuppressWarnings("kotlin:S1481")
     fun addScenario(scenarioUrl: String, goToScenarioDetail: (scenarioId: Long) -> Unit) {
+        val getScenarioByUrlUseCase by GlobalContext.get().inject<GetScenarioByUrlUseCase>()
         viewModelScope.launch {
+            savedStateHandle[SCENARIO_LIST_UI_STATE_KEY] = ScenarioListUiState.Loading
             withContext(dispatchers.default()) {
                 kotlin.runCatching {
                     getScenarioByUrlUseCase(documentUrl = URL(scenarioUrl))
@@ -62,6 +64,7 @@ class ScenarioListViewModel(
 
     fun deleteScenario(scenarioId: Long) {
         viewModelScope.launch {
+            savedStateHandle[SCENARIO_LIST_UI_STATE_KEY] = ScenarioListUiState.Loading
             withContext(dispatchers.default()) {
                 kotlin.runCatching {
                     deleteScenarioUseCase(scenarioId = scenarioId)
@@ -75,7 +78,13 @@ class ScenarioListViewModel(
             withContext(dispatchers.default()) {
                 // TODO Catch SQLiteException
                 kotlin.runCatching { getScenarioListUseCase() }
-                    .onSuccess { scenarios -> savedStateHandle[SCENARIO_LIST_UI_STATE_KEY] = ScenarioListUiState.Success(scenarios = scenarios) }
+                    .onSuccess { scenarios ->
+                        savedStateHandle[SCENARIO_LIST_UI_STATE_KEY] = if (scenarios.isNotEmpty()) {
+                            ScenarioListUiState.Success(scenarios = scenarios)
+                        } else {
+                            ScenarioListUiState.NoResult
+                        }
+                    }
             }
         }
     }

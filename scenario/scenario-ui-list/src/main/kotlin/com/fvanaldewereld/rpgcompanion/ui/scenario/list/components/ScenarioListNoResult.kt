@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
 import com.fvanaldewereld.rpgcompanion.ui.scenario.list.R
@@ -19,7 +20,7 @@ internal fun ScenarioListNoResult(
         modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
     ) {
-        Text(text = stringResource(R.string.scenarioList_noResult_text))
+        Text(text = stringResource(R.string.scenarioList_noResult_text), textAlign = TextAlign.Center)
     }
 
 }

@@ -11,7 +11,7 @@ val SCENARIO_DOMAIN_LIB_MODULE = module {
     // Usecases
     single { AddScenarioUseCase() }
     single { DeleteScenarioUseCase() }
-    single { GetScenarioByUrlUseCase() }
+    factory { GetScenarioByUrlUseCase() }
     single { GetScenarioListUseCase() }
     single { GetScenarioByDocumentNameUseCase() }
 }
