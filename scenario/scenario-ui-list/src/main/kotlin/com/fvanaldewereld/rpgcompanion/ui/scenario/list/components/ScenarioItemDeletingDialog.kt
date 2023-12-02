@@ -62,7 +62,7 @@ fun ScenarioItemDeletingDialog(
 private fun ScenarioItemDeletingDialogPreview() {
     RPGCompanionTheme {
         ScenarioItemDeletingDialog(
-            scenario = ScenarioModelMockFactory.scenarioModel,
+            scenario = ScenarioModelMockFactory.scenarioModelWithoutId,
         )
     }
 }

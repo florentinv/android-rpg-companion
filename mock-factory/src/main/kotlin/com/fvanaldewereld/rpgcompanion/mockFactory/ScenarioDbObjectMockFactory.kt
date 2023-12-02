@@ -1,19 +1,14 @@
 package com.fvanaldewereld.rpgcompanion.mockFactory
 
-import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.AuthorModel
-import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.ChapterModel
-import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.ChaptersModel
-import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.CharacterModel
-import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.CharactersModel
-import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.DescriptionModel
-import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.InformationModel
-import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.PlaceModel
-import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.PlacesModel
-import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.ScenarioModel
-import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.SummaryModel
-import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.TitleModel
+import com.fvanaldewereld.rpgcompanion.data.scenario.sources.localDatabase.embedded.Information
+import com.fvanaldewereld.rpgcompanion.data.scenario.sources.localDatabase.entities.Chapter
+import com.fvanaldewereld.rpgcompanion.data.scenario.sources.localDatabase.entities.Character
+import com.fvanaldewereld.rpgcompanion.data.scenario.sources.localDatabase.entities.Place
+import com.fvanaldewereld.rpgcompanion.data.scenario.sources.localDatabase.entities.ScenarioBase
+import com.fvanaldewereld.rpgcompanion.data.scenario.sources.localDatabase.relations.Scenario
 
-object ScenarioModelMockFactory {
+
+object ScenarioDbObjectMockFactory {
 
     private const val SCENARIO_DOCUMENT_NAME = "Scenario - Example"
 
@@ -55,107 +50,60 @@ object ScenarioModelMockFactory {
 
     private const val SCENARIO_PLACES_DESCRIPTION_2 = """Phasellus commodo enim scelerisque molestie varius. Aenean tincidunt aliquam mi a vestibulum. Aliquam imperdiet vel velit vitae blandit. Praesent a dignissim nunc. Aenean quis elementum enim, a vulputate augue. In eget aliquet elit. Ut nulla dui, eleifend eu urna sed, venenatis fermentum tellus. Mauris id ante ipsum. Vestibulum ac pulvinar ante. Morbi eget nisi erat."""
 
-
-    val titleModel = TitleModel(SCENARIO_TITLE)
-    val authorModel = AuthorModel(SCENARIO_AUTHOR)
-    val informationModel = InformationModel(
+    val information = Information(
         nbPlayers = NUMBER_OF_PLAYERS_VALUE,
         genres = listOf(GENRES_HORROR, GENRES_DRAMA),
         themes = listOf(THEMES_ALIEN, THEMES_POSSESSION, THEMES_PSYCOLOGICAL),
     )
-    val summaryDescriptionModel = DescriptionModel(
-        paragraphs = listOf(SCENARIO_SUMMARY_TEXT),
-    )
-    val summaryModel = SummaryModel(
-        text = summaryDescriptionModel,
-    )
-    val chapterDescriptionModel = DescriptionModel(
-        paragraphs = listOf(SCENARIO_CHAPTERS_INTRODUCTION_TEXT),
-    )
-    val chapterModel = ChapterModel(
+
+    val chapter = Chapter(
         name = SCENARIO_CHAPTERS_INTRODUCTION,
-        description = chapterDescriptionModel,
+        description = listOf(SCENARIO_CHAPTERS_INTRODUCTION_TEXT),
     )
-    val chaptersModel = ChaptersModel(
-        listOf(
-            chapterModel,
-        ),
-    )
-    val characterDescriptionModel1 = DescriptionModel(
-        paragraphs = listOf(SCENARIO_CHARACTERS_DESCRIPTION_1),
-    )
-    val characterModel1 = CharacterModel(
+    private val chapters = listOf(chapter)
+
+    val character1 = Character(
         name = SCENARIO_CHARACTERS_NAME_1,
-        description = characterDescriptionModel1,
+        description = listOf(SCENARIO_CHARACTERS_DESCRIPTION_1),
     )
-    private val characterDescriptionModel2 = DescriptionModel(
-        paragraphs = listOf(SCENARIO_CHARACTERS_DESCRIPTION_2),
-    )
-    val characterModel2 = CharacterModel(
+
+    val character2 = Character(
         name = SCENARIO_CHARACTERS_NAME_2,
-        description = characterDescriptionModel2,
+        description = listOf(SCENARIO_CHARACTERS_DESCRIPTION_2),
     )
-    val charactersModel = CharactersModel(
-        characters = listOf(
-            characterModel1,
-            characterModel2,
-        ),
-    )
-    val placeDescriptionModel1 = DescriptionModel(
-        paragraphs = listOf(SCENARIO_PLACES_DESCRIPTION_1),
-    )
-    val placeModel1 = PlaceModel(
+    private val characters = listOf(character1, character2)
+
+    val place1 = Place(
         name = SCENARIO_PLACES_NAME_1,
-        description = placeDescriptionModel1,
+        description = listOf(SCENARIO_PLACES_DESCRIPTION_1),
     )
-    private val placeDescriptionModel2 = DescriptionModel(
-        paragraphs = listOf(SCENARIO_PLACES_DESCRIPTION_2),
-    )
-    val placeModel2 = PlaceModel(
+
+    val place2 = Place(
         name = SCENARIO_PLACES_NAME_2,
-        description = placeDescriptionModel2,
+        description = listOf(SCENARIO_PLACES_DESCRIPTION_2),
     )
-    val placesModel = PlacesModel(
-        places = listOf(
-            placeModel1,
-            placeModel2,
+
+    private val places = listOf(place1, place2)
+
+    val scenario = Scenario(
+        scenarioBase = ScenarioBase(
+            id = 0,
+            documentName = SCENARIO_DOCUMENT_NAME,
+            title = SCENARIO_TITLE,
+            author = SCENARIO_AUTHOR,
+            information = information,
+            summary = listOf(SCENARIO_SUMMARY_TEXT),
         ),
+        chapters = chapters,
+        characters = characters,
+        places = places,
     )
 
-    val scenarioModelWithoutId = ScenarioModel(
-        documentName = SCENARIO_DOCUMENT_NAME,
-        title = titleModel,
-        author = authorModel,
-        information = informationModel,
-        summary = summaryModel,
-        chapters = chaptersModel,
-        characters = charactersModel,
-        places = placesModel,
-    )
-
-    val scenarioModelWithId = ScenarioModel(
-        id = 0,
-        documentName = SCENARIO_DOCUMENT_NAME,
-        title = titleModel,
-        author = authorModel,
-        information = informationModel,
-        summary = summaryModel,
-        chapters = chaptersModel,
-        characters = charactersModel,
-        places = placesModel,
-    )
-
-    val emptyScenarioModelWithoutId = ScenarioModel(
-        documentName = SCENARIO_DOCUMENT_NAME,
-    )
-
-    val emptyScenarioModelWithId = ScenarioModel(
-        id = 0,
-        documentName = SCENARIO_DOCUMENT_NAME,
-    )
-
-    val exampleDescriptionModel = DescriptionModel(
-        paragraphs = listOf("example"),
+    val emptyScenario = Scenario(
+        scenarioBase = ScenarioBase(
+            id = 0,
+            documentName = SCENARIO_DOCUMENT_NAME,
+        ),
     )
 
 }

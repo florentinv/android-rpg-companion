@@ -43,13 +43,13 @@ class GoogleDocsRepositoryTest : BasicKoinTest() {
             Mockito.`when`(mockGoogleDocsDataSource.getGoogleDocsById(GoogleDocsMockFactory.googleDocsDocumentId))
                 .thenReturn(ScenarioDtoMockFactory.scenarioDto)
             Mockito.`when`(mockScenarioModelMapper.to(ScenarioDtoMockFactory.scenarioDto))
-                .thenReturn(ScenarioModelMockFactory.scenarioModel)
+                .thenReturn(ScenarioModelMockFactory.scenarioModelWithoutId)
 
             // WHEN
             val scenarioModel = googleDocsRepository.getScenarioByGdocsUrl(GoogleDocsMockFactory.googleDocsUrl)
 
             // THEN
-            Assertions.assertEquals(scenarioModel, ScenarioModelMockFactory.scenarioModel)
+            Assertions.assertEquals(scenarioModel, ScenarioModelMockFactory.scenarioModelWithoutId)
         }
 
 }

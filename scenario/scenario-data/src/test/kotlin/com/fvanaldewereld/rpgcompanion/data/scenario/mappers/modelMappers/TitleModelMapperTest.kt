@@ -1,14 +1,12 @@
-package com.fvanaldewereld.rpgcompanion.data.scenario.mappers
+package com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers
 
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.TitleModelMapper
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.TitleModelMapperImpl
 import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioDtoMockFactory
 import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioModelMockFactory
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-class TitleModelMapperTest{
+class TitleModelMapperTest {
 
     private lateinit var titleModelMapper: TitleModelMapper
 

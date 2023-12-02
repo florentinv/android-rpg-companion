@@ -1,15 +1,6 @@
-package com.fvanaldewereld.rpgcompanion.data.scenario.mappers
+package com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers
 
 import BasicKoinTest
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.AuthorModelMapper
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.ChaptersModelMapper
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.CharactersModelMapper
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.InformationModelMapper
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.PlacesModelMapper
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.ScenarioModelMapper
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.ScenarioModelMapperImpl
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.SummaryModelMapper
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.TitleModelMapper
 import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioDtoMockFactory
 import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioModelMockFactory
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -20,7 +11,7 @@ import org.koin.dsl.module
 import org.koin.test.inject
 import org.mockito.Mockito
 
-class ScenarioModelMapperTest: BasicKoinTest() {
+class ScenarioModelMapperTest : BasicKoinTest() {
 
     private val mockAuthorModeMapper by inject<AuthorModelMapper>()
     private val mockChaptersModelMapper by inject<ChaptersModelMapper>()
@@ -51,18 +42,18 @@ class ScenarioModelMapperTest: BasicKoinTest() {
     }
 
     @Test
-    fun `GIVEN empty ScenarioEntity WHEN map THEN return empty ScenarioModel`() {
+    fun `WHEN map empty ScenarioEntity THEN return empty ScenarioModel`() {
         // GIVEN
 
         // WHEN
         val scenario = scenarioModelMapper.to(ScenarioDtoMockFactory.emptyScenarioDto)
 
         // THEN
-        assertEquals(scenario, ScenarioModelMockFactory.emptyScenarioModel)
+        assertEquals(scenario, ScenarioModelMockFactory.emptyScenarioModelWithoutId)
     }
 
     @Test
-    fun `GIVEN ScenarioEntity WHEN map THEN return ScenarioModel`() {
+    fun `WHEN map ScenarioEntity THEN return ScenarioModel`() {
         // GIVEN
         Mockito.`when`(mockAuthorModeMapper.to(ScenarioDtoMockFactory.authorDto))
             .thenReturn(ScenarioModelMockFactory.authorModel)
@@ -83,6 +74,6 @@ class ScenarioModelMapperTest: BasicKoinTest() {
         val scenario = scenarioModelMapper.to(ScenarioDtoMockFactory.scenarioDto)
 
         // THEN
-        assertEquals(scenario, ScenarioModelMockFactory.scenarioModel)
+        assertEquals(scenario, ScenarioModelMockFactory.scenarioModelWithoutId)
     }
 }

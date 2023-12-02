@@ -1,9 +1,6 @@
-package com.fvanaldewereld.rpgcompanion.data.scenario.mappers
+package com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers
 
 import BasicKoinTest
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.CharacterModelMapper
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.CharactersModelMapper
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.CharactersModelMapperImpl
 import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioDtoMockFactory
 import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioModelMockFactory
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -14,7 +11,7 @@ import org.koin.dsl.module
 import org.koin.test.inject
 import org.mockito.Mockito
 
-class CharactersModelMapperTest: BasicKoinTest( ){
+class CharactersModelMapperTest : BasicKoinTest() {
 
     private val mockCharacterModelMapper by inject<CharacterModelMapper>()
     private lateinit var charactersModelMapper: CharactersModelMapper
@@ -23,7 +20,7 @@ class CharactersModelMapperTest: BasicKoinTest( ){
         modules(
             module {
                 single { Mockito.mock<CharacterModelMapper>() }
-            }
+            },
         )
     }
 

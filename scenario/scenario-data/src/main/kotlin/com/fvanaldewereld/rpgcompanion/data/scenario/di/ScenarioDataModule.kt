@@ -3,16 +3,16 @@ package com.fvanaldewereld.rpgcompanion.data.scenario.di
 import androidx.room.Room
 import com.fvanaldewereld.rpgcompanion.api.domain.scenario.repositories.DbScenarioRepository
 import com.fvanaldewereld.rpgcompanion.api.domain.scenario.repositories.GoogleDocsRepository
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMapper.ChapterMapper
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMapper.ChapterMapperImpl
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMapper.CharacterMapper
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMapper.CharacterMapperImpl
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMapper.InformationMapper
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMapper.InformationMapperImpl
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMapper.PlaceMapper
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMapper.PlaceMapperImpl
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMapper.ScenarioCompleteMapperImpl
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMapper.ScenarioMapper
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers.ChapterMapper
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers.ChapterMapperImpl
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers.CharacterMapper
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers.CharacterMapperImpl
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers.InformationMapper
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers.InformationMapperImpl
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers.PlaceMapper
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers.PlaceMapperImpl
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers.ScenarioMapperImpl
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers.ScenarioMapper
 import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dtoMappers.ScenarioDtoMapper
 import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dtoMappers.ScenarioDtoMapperImpl
 import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.AuthorModelMapper
@@ -73,7 +73,7 @@ val SCENARIO_DATA_MODULE = module {
     factory<ScenarioDtoMapper> { ScenarioDtoMapperImpl() }
 
     // DbObjectMapper
-    single<ScenarioMapper> { ScenarioCompleteMapperImpl() }
+    single<ScenarioMapper> { ScenarioMapperImpl() }
     single<ChapterMapper> { ChapterMapperImpl() }
     single<CharacterMapper> { CharacterMapperImpl() }
     single<InformationMapper> { InformationMapperImpl() }

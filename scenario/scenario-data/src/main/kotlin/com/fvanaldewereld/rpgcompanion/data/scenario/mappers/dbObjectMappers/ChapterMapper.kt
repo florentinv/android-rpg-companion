@@ -1,4 +1,4 @@
-package com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMapper
+package com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers
 
 import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.ChapterModel
 import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.DescriptionModel

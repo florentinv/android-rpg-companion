@@ -39,6 +39,6 @@ internal fun ScenarioListSuccess(
 @Composable
 private fun ScenarioDetailSuccessPreview() {
     RPGCompanionTheme {
-        ScenarioListSuccess(scenarios = listOf(ScenarioModelMockFactory.scenarioModel))
+        ScenarioListSuccess(scenarios = listOf(ScenarioModelMockFactory.scenarioModelWithoutId))
     }
 }

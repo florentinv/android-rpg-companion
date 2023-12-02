@@ -61,6 +61,6 @@ internal fun ScenarioListItem(
 @Composable
 private fun ScenarioListItemPreview() {
     RPGCompanionTheme {
-        ScenarioListItem(id = 1, scenario = ScenarioModelMockFactory.scenarioModel)
+        ScenarioListItem(id = 1, scenario = ScenarioModelMockFactory.scenarioModelWithoutId)
     }
 }

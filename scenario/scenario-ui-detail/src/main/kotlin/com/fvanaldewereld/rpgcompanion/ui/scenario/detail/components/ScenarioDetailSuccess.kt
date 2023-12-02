@@ -232,6 +232,6 @@ internal fun ScenarioDetailSuccess(
 @Composable
 internal fun ScenarioDetailSuccessPreview() {
     RPGCompanionTheme {
-        ScenarioDetailSuccess(scenario = ScenarioModelMockFactory.scenarioModel)
+        ScenarioDetailSuccess(scenario = ScenarioModelMockFactory.scenarioModelWithoutId)
     }
 }
