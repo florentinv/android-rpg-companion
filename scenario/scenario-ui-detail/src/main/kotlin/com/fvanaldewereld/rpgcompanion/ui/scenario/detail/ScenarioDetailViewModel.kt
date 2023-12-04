@@ -2,12 +2,12 @@ package com.fvanaldewereld.rpgcompanion.ui.scenario.detail
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.fvanaldewereld.rpgcompanion.lib.domain.scenario.usecases.GetScenarioByUrlUseCase
-import java.net.URL
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import androidx.lifecycle.viewModelScope
+import com.fvanaldewereld.rpgcompanion.common.dispatchers.KDispatchers
+import com.fvanaldewereld.rpgcompanion.lib.domain.scenario.usecases.GetScenarioByDocumentNameUseCase
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.core.context.GlobalContext
 
 class ScenarioDetailViewModel(
@@ -16,13 +16,13 @@ class ScenarioDetailViewModel(
 
     companion object {
         const val SCENARIO_UI_STATE_KEY = "SCENARIO_UI_STATE_KEY"
+        const val SCENARIO_ID_KEY = "scenarioId"
     }
 
-    private val getScenarioByUrlUseCase: GetScenarioByUrlUseCase by GlobalContext.get().inject()
+    private val getScenarioByDocumentNameUseCase: GetScenarioByDocumentNameUseCase by GlobalContext.get().inject()
+    private val dispatchers: KDispatchers by GlobalContext.get().inject()
 
-    private val googleDocsUrl = URL(
-        "https://docs.google.com/document/d/1YMuTjXvyU_sZFOu8PlvX1DNlJ7t1h7ne4yQvDSWHE54/edit?usp=sharing",
-    )
+    private val scenarioId: String = checkNotNull(savedStateHandle[SCENARIO_ID_KEY])
 
     var scenarioDetailUiStateFlow: StateFlow<ScenarioDetailUiState> =
         savedStateHandle.getStateFlow<ScenarioDetailUiState>(
@@ -32,15 +32,19 @@ class ScenarioDetailViewModel(
 
     init {
         if (scenarioDetailUiStateFlow.value is ScenarioDetailUiState.Loading) {
-            getScenario()
+            getScenarioDetail()
         }
     }
 
-    private fun getScenario() {
-        CoroutineScope(Dispatchers.Default).launch {
-            val scenario = getScenarioByUrlUseCase(googleDocsUrl)
-            savedStateHandle[SCENARIO_UI_STATE_KEY] =
-                ScenarioDetailUiState.Success(scenario = scenario)
+    private fun getScenarioDetail() {
+        viewModelScope.launch {
+            withContext(dispatchers.default()) {
+                // TODO Catch SQLiteException
+                kotlin.runCatching { getScenarioByDocumentNameUseCase(scenarioId.toLong()) }
+                    .onSuccess { scenarioModel ->
+                        savedStateHandle[SCENARIO_UI_STATE_KEY] = ScenarioDetailUiState.Success(scenario = scenarioModel)
+                    }
+            }
         }
     }
 }

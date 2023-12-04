@@ -39,13 +39,13 @@ class GetScenarioByUrlUseCaseTest : BasicKoinTest() {
         runBlocking {
             // GIVEN
             Mockito.`when`(mockGoogleDocsRepository.getScenarioByGdocsUrl(GoogleDocsMockFactory.googleDocsUrl))
-                .thenReturn(ScenarioModelMockFactory.scenarioModel)
+                .thenReturn(ScenarioModelMockFactory.scenarioModelWithoutId)
 
             // WHEN
             val scenario = getScenarioByUrlUseCase(GoogleDocsMockFactory.googleDocsUrl)
 
             // THEN
-            assertEquals(scenario, ScenarioModelMockFactory.scenarioModel)
+            assertEquals(scenario, ScenarioModelMockFactory.scenarioModelWithoutId)
         }
 
 }

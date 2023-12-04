@@ -15,6 +15,8 @@ import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.TitleModel
 
 object ScenarioModelMockFactory {
 
+    const val SCENARIO_ID: Long = 0
+
     private const val SCENARIO_DOCUMENT_NAME = "Scenario - Example"
 
     private const val SCENARIO_TITLE = "Scenario"
@@ -121,7 +123,8 @@ object ScenarioModelMockFactory {
             placeModel2,
         ),
     )
-    val scenarioModel = ScenarioModel(
+
+    val scenarioModelWithoutId = ScenarioModel(
         documentName = SCENARIO_DOCUMENT_NAME,
         title = titleModel,
         author = authorModel,
@@ -132,11 +135,29 @@ object ScenarioModelMockFactory {
         places = placesModel,
     )
 
-    val emptyScenarioModel = ScenarioModel(
+    val scenarioModelWithId = ScenarioModel(
+        id = SCENARIO_ID,
+        documentName = SCENARIO_DOCUMENT_NAME,
+        title = titleModel,
+        author = authorModel,
+        information = informationModel,
+        summary = summaryModel,
+        chapters = chaptersModel,
+        characters = charactersModel,
+        places = placesModel,
+    )
+
+    val emptyScenarioModelWithoutId = ScenarioModel(
+        documentName = SCENARIO_DOCUMENT_NAME,
+    )
+
+    val emptyScenarioModelWithId = ScenarioModel(
+        id = SCENARIO_ID,
         documentName = SCENARIO_DOCUMENT_NAME,
     )
 
     val exampleDescriptionModel = DescriptionModel(
         paragraphs = listOf("example"),
     )
+
 }

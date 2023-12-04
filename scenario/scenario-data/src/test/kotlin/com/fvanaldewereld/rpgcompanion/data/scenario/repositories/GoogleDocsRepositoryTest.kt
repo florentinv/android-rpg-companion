@@ -2,7 +2,7 @@ package com.fvanaldewereld.rpgcompanion.data.scenario.repositories
 
 import BasicKoinTest
 import com.fvanaldewereld.rpgcompanion.api.domain.scenario.repositories.GoogleDocsRepository
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.ScenarioModelMapper
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.ScenarioModelMapper
 import com.fvanaldewereld.rpgcompanion.data.scenario.sources.googleDocs.GoogleDocsDataSource
 import com.fvanaldewereld.rpgcompanion.mockFactory.GoogleDocsMockFactory
 import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioDtoMockFactory
@@ -43,13 +43,13 @@ class GoogleDocsRepositoryTest : BasicKoinTest() {
             Mockito.`when`(mockGoogleDocsDataSource.getGoogleDocsById(GoogleDocsMockFactory.googleDocsDocumentId))
                 .thenReturn(ScenarioDtoMockFactory.scenarioDto)
             Mockito.`when`(mockScenarioModelMapper.to(ScenarioDtoMockFactory.scenarioDto))
-                .thenReturn(ScenarioModelMockFactory.scenarioModel)
+                .thenReturn(ScenarioModelMockFactory.scenarioModelWithoutId)
 
             // WHEN
             val scenarioModel = googleDocsRepository.getScenarioByGdocsUrl(GoogleDocsMockFactory.googleDocsUrl)
 
             // THEN
-            Assertions.assertEquals(scenarioModel, ScenarioModelMockFactory.scenarioModel)
+            Assertions.assertEquals(scenarioModel, ScenarioModelMockFactory.scenarioModelWithoutId)
         }
 
 }

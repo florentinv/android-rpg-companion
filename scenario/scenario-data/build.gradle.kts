@@ -1,5 +1,6 @@
 apply(from = "${project.rootDir}/gradle/android_shared.gradle")
 apply(from = "${project.rootDir}/gradle/koin.gradle")
+apply(from = "${project.rootDir}/gradle/room.gradle")
 apply(from = "${project.rootDir}/gradle/unit_test.gradle")
 
 plugins {

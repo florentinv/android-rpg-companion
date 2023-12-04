@@ -1,12 +1,12 @@
 package com.fvanaldewereld.rpgcompanion.lib.domain.scenario.usecases
 
 import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.ScenarioModel
-import kotlinx.coroutines.delay
+import com.fvanaldewereld.rpgcompanion.api.domain.scenario.repositories.DbScenarioRepository
+import org.koin.core.context.GlobalContext
 
 class GetScenarioListUseCase {
 
-    suspend operator fun invoke(): List<ScenarioModel> {
-        delay(1000) //TODO remove when tested
-        return emptyList()
-    }
+    private val localDbScenarioRepository: DbScenarioRepository by GlobalContext.get().inject()
+
+    suspend operator fun invoke(): List<ScenarioModel> = localDbScenarioRepository.getAllScenarios()
 }

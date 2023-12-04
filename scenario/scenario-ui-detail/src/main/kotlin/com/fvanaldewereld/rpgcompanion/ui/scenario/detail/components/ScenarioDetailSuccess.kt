@@ -6,14 +6,13 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Chip
-import androidx.compose.material.ChipDefaults
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Icon
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.AssistChip
+import androidx.compose.material3.AssistChipDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,19 +24,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.ScenarioModel
 import com.fvanaldewereld.rpgcompanion.common.ui.component.RpgCompanionTopAppBar
+import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
 import com.fvanaldewereld.rpgcompanion.common.ui.theme.Typography
 import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioModelMockFactory
 import com.fvanaldewereld.rpgcompanion.ui.scenario.detail.R
 
-@OptIn(ExperimentalMaterialApi::class, ExperimentalLayoutApi::class)
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun ScenarioDetailSuccess(
+internal fun ScenarioDetailSuccess(
     scenario: ScenarioModel,
     onBackButtonPressed: () -> Unit = {},
 ) {
     Scaffold(
-        topBar = { RpgCompanionTopAppBar(
-                title = "Scenario Detail ${scenario.title?.value?.let { "- $it" }}",
+        topBar = {
+            RpgCompanionTopAppBar(
+                title = "${scenario.id} // Scenario Detail ${scenario.title?.value?.let { "- $it" }}",
                 onBackButtonPressed = onBackButtonPressed,
             )
         },
@@ -52,7 +53,7 @@ fun ScenarioDetailSuccess(
                 scenario.title?.value?.let { titleText ->
                     Text(
                         text = titleText,
-                        style = Typography.h4,
+                        style = Typography.headlineMedium,
                         textAlign = TextAlign.Center,
                     )
                 }
@@ -62,7 +63,7 @@ fun ScenarioDetailSuccess(
                 scenario.author?.name?.let { authorName ->
                     Text(
                         text = stringResource(R.string.scenario_detail_page_author, authorName),
-                        style = Typography.h6.copy(
+                        style = Typography.titleLarge.copy(
                             fontStyle = FontStyle.Italic,
                             color = Color.LightGray,
                         ),
@@ -72,19 +73,20 @@ fun ScenarioDetailSuccess(
 
             item {
                 scenario.information?.nbPlayers?.let { nbPlayers ->
-                    Chip(
+                    AssistChip(
                         onClick = {},
                         modifier = Modifier.padding(2.dp),
-                        colors = ChipDefaults.chipColors(Color.Green.copy(alpha = 0.5F)),
+                        colors = AssistChipDefaults.assistChipColors(Color.Green.copy(alpha = 0.5F)),
                         leadingIcon = {
                             Icon(imageVector = Icons.Default.Person, contentDescription = null)
                         },
-                    ) {
-                        Text(
-                            nbPlayers.toString(),
-                            textAlign = TextAlign.Center,
-                        )
-                    }
+                        label = {
+                            Text(
+                                nbPlayers.toString(),
+                                textAlign = TextAlign.Center,
+                            )
+                        },
+                    )
                 }
             }
 
@@ -95,16 +97,17 @@ fun ScenarioDetailSuccess(
                         modifier = Modifier.padding(horizontal = 15.dp),
                     ) {
                         genres.forEach { genre ->
-                            Chip(
+                            AssistChip(
                                 onClick = {},
                                 modifier = Modifier.padding(2.dp),
-                                colors = ChipDefaults.chipColors(Color.Red.copy(alpha = 0.5F)),
-                            ) {
-                                Text(
-                                    genre,
-                                    textAlign = TextAlign.Center,
-                                )
-                            }
+                                colors = AssistChipDefaults.assistChipColors(Color.Red.copy(alpha = 0.5F)),
+                                label = {
+                                    Text(
+                                        genre,
+                                        textAlign = TextAlign.Center,
+                                    )
+                                },
+                            )
                         }
                     }
                 }
@@ -117,16 +120,17 @@ fun ScenarioDetailSuccess(
                         modifier = Modifier.padding(horizontal = 15.dp),
                     ) {
                         themes.forEach { theme ->
-                            Chip(
+                            AssistChip(
                                 onClick = {},
                                 modifier = Modifier.padding(2.dp),
-                                colors = ChipDefaults.chipColors(Color.Blue.copy(alpha = 0.5F)),
-                            ) {
-                                Text(
-                                    theme,
-                                    textAlign = TextAlign.Center,
-                                )
-                            }
+                                colors = AssistChipDefaults.assistChipColors(Color.Blue.copy(alpha = 0.5F)),
+                                label = {
+                                    Text(
+                                        theme,
+                                        textAlign = TextAlign.Center,
+                                    )
+                                },
+                            )
                         }
                     }
                 }
@@ -136,7 +140,7 @@ fun ScenarioDetailSuccess(
                 scenario.summary?.let { summary ->
                     Text(
                         "Summary",
-                        style = Typography.h5,
+                        style = Typography.headlineSmall,
                         modifier = Modifier.padding(top = 10.dp, bottom = 5.dp),
                     )
                     summary.text?.paragraphs?.forEach { paragraph ->
@@ -153,13 +157,13 @@ fun ScenarioDetailSuccess(
                 scenario.places?.let { places ->
                     Text(
                         "Places",
-                        style = Typography.h5,
+                        style = Typography.headlineSmall,
                         modifier = Modifier.padding(top = 10.dp, bottom = 5.dp),
                     )
                     places.places?.forEach { place ->
                         Text(
                             place.name ?: "/",
-                            style = Typography.h6,
+                            style = Typography.titleLarge,
                             modifier = Modifier.padding(top = 10.dp, bottom = 5.dp),
                         )
                         place.description?.paragraphs?.forEach { paragraph ->
@@ -177,13 +181,13 @@ fun ScenarioDetailSuccess(
                 scenario.characters?.let { characters ->
                     Text(
                         "Characters",
-                        style = Typography.h5,
+                        style = Typography.headlineSmall,
                         modifier = Modifier.padding(top = 10.dp, bottom = 5.dp),
                     )
                     characters.characters?.forEach { character ->
                         Text(
                             character.name ?: "/",
-                            style = Typography.h6,
+                            style = Typography.titleLarge,
                             modifier = Modifier.padding(top = 10.dp, bottom = 5.dp),
                         )
                         character.description?.paragraphs?.forEach { paragraph ->
@@ -201,13 +205,13 @@ fun ScenarioDetailSuccess(
                 scenario.chapters?.let { content ->
                     Text(
                         "Content",
-                        style = Typography.h5,
+                        style = Typography.headlineSmall,
                         modifier = Modifier.padding(top = 10.dp, bottom = 5.dp),
                     )
                     content.chapters?.forEach { chapter ->
                         Text(
                             chapter.name ?: "/",
-                            style = Typography.h6,
+                            style = Typography.titleLarge,
                             modifier = Modifier.padding(top = 10.dp, bottom = 5.dp),
                         )
                         chapter.description?.paragraphs?.forEach { paragraph ->
@@ -226,8 +230,8 @@ fun ScenarioDetailSuccess(
 
 @Preview(showBackground = true)
 @Composable
-fun ScenarioDetailSuccessPreview() {
-    com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme {
-        ScenarioDetailSuccess(scenario = ScenarioModelMockFactory.scenarioModel)
+internal fun ScenarioDetailSuccessPreview() {
+    RPGCompanionTheme {
+        ScenarioDetailSuccess(scenario = ScenarioModelMockFactory.scenarioModelWithoutId)
     }
 }

@@ -7,7 +7,7 @@ import com.fvanaldewereld.rpgcompanion.data.scenario.dto.CharacterDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.CharactersDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.DescriptionDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.InformationDto
-import com.fvanaldewereld.rpgcompanion.data.scenario.dto.PlaceEntity
+import com.fvanaldewereld.rpgcompanion.data.scenario.dto.PlaceDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.PlacesDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.ScenarioDto
 import com.fvanaldewereld.rpgcompanion.data.scenario.dto.SummaryDto
@@ -92,21 +92,21 @@ object ScenarioDtoMockFactory {
     val placeDescriptionDto1 = DescriptionDto(
         paragraphs = listOf(SCENARIO_PLACES_DESCRIPTION_1),
     )
-    val placeEntity1 = PlaceEntity(
+    val placeDto1 = PlaceDto(
         name = SCENARIO_PLACES_NAME_1,
         description = placeDescriptionDto1,
     )
     private val placeDescriptionDto2 = DescriptionDto(
         paragraphs = listOf(SCENARIO_PLACES_DESCRIPTION_2),
     )
-    val placeEntity2 = PlaceEntity(
+    val placeDto2 = PlaceDto(
         name = SCENARIO_PLACES_NAME_2,
         description = placeDescriptionDto2,
     )
     val placesDto = PlacesDto(
         places = listOf(
-            placeEntity1,
-            placeEntity2,
+            placeDto1,
+            placeDto2,
         ),
     )
     val chapterDescriptionDto = DescriptionDto(

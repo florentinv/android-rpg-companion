@@ -5,5 +5,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class PlacesDto(
-    val places: List<PlaceEntity>? = emptyList(),
+    val places: List<PlaceDto>? = emptyList(),
 ) : Parcelable, ScenarioElementDto

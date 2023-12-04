@@ -1,0 +1,16 @@
+apply plugin: 'com.google.devtools.ksp'
+
+android {
+    defaultConfig {
+        ksp {
+            arg('room.schemaLocation', "$projectDir/schemas")
+        }
+    }
+}
+
+dependencies {
+    // Room
+    implementation(libs.bundles.room)
+    implementation(libs.kotlinx.serialization)
+    ksp(libs.room.compiler)
+}
