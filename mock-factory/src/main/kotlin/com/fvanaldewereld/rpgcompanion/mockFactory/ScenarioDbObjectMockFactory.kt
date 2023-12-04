@@ -10,7 +10,9 @@ import com.fvanaldewereld.rpgcompanion.data.scenario.sources.localDatabase.relat
 
 object ScenarioDbObjectMockFactory {
 
-    private const val SCENARIO_DOCUMENT_NAME = "Scenario - Example"
+    const val SCENARIO_DOCUMENT_NAME = "Scenario - Example"
+
+    const val SCENARIO_ID: Long = 0
 
     private const val SCENARIO_TITLE = "Scenario"
 
@@ -87,7 +89,7 @@ object ScenarioDbObjectMockFactory {
 
     val scenario = Scenario(
         scenarioBase = ScenarioBase(
-            id = 0,
+            id = SCENARIO_ID,
             documentName = SCENARIO_DOCUMENT_NAME,
             title = SCENARIO_TITLE,
             author = SCENARIO_AUTHOR,
@@ -101,7 +103,7 @@ object ScenarioDbObjectMockFactory {
 
     val emptyScenario = Scenario(
         scenarioBase = ScenarioBase(
-            id = 0,
+            id = SCENARIO_ID,
             documentName = SCENARIO_DOCUMENT_NAME,
         ),
     )

@@ -3,14 +3,27 @@ package com.fvanaldewereld.rpgcompanion.data.scenario.sources.localDatabase.dao
 import com.fvanaldewereld.rpgcompanion.data.scenario.sources.localDatabase.relations.Scenario
 import org.koin.core.context.GlobalContext
 
-class ScenarioDao {
+interface ScenarioDao {
+    fun insertScenario(scenario: Scenario): Long
+
+    fun deleteScenario(scenario: Scenario): Long
+
+    fun getAllScenarios(): List<Scenario>
+
+    fun getScenarioByDocumentName(documentName: String): Scenario
+
+    fun getScenarioById(id: Long): Scenario
+
+}
+
+class ScenarioDaoImpl : ScenarioDao {
 
     private val scenarioBaseDao: ScenarioBaseDao by GlobalContext.get().inject()
     private val chapterDao: ChapterDao by GlobalContext.get().inject()
     private val characterDao: CharacterDao by GlobalContext.get().inject()
     private val placeDao: PlaceDao by GlobalContext.get().inject()
 
-    fun insertScenario(scenario: Scenario) : Long {
+    override fun insertScenario(scenario: Scenario): Long {
         val scenarioBaseId = scenarioBaseDao.insertScenarioBase(scenario.scenarioBase)
         scenario.chapters?.let { chapters ->
             run {
@@ -33,7 +46,7 @@ class ScenarioDao {
         return scenarioBaseId
     }
 
-    fun deleteScenario(scenario: Scenario) : Long{
+    override fun deleteScenario(scenario: Scenario): Long {
         scenarioBaseDao.deleteScenarioBase(scenarioBase = scenario.scenarioBase)
         scenario.chapters?.map { chapterDao.delete(it) }
         scenario.characters?.map { characterDao.delete(it) }
@@ -41,7 +54,7 @@ class ScenarioDao {
         return scenario.scenarioBase.id
     }
 
-    fun getAllScenarios(): List<Scenario> = scenarioBaseDao.getAllScenariosBase()
+    override fun getAllScenarios(): List<Scenario> = scenarioBaseDao.getAllScenariosBase()
         .map { scenarioBase ->
             Scenario(
                 scenarioBase = scenarioBase,
@@ -51,7 +64,7 @@ class ScenarioDao {
             )
         }
 
-    fun getScenarioByDocumentName(documentName: String): Scenario = scenarioBaseDao.getScenarioBaseByDocumentName(documentName = documentName)
+    override fun getScenarioByDocumentName(documentName: String): Scenario = scenarioBaseDao.getScenarioBaseByDocumentName(documentName = documentName)
         .let { scenarioBase ->
             Scenario(
                 scenarioBase = scenarioBase,
@@ -61,7 +74,7 @@ class ScenarioDao {
             )
         }
 
-    fun getScenarioById(id: Long): Scenario = scenarioBaseDao.getScenarioBaseById(id)
+    override fun getScenarioById(id: Long): Scenario = scenarioBaseDao.getScenarioBaseById(id)
         .let { scenarioBase ->
             Scenario(
                 scenarioBase = scenarioBase,

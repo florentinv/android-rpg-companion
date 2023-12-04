@@ -11,8 +11,8 @@ import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers.Inf
 import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers.InformationMapperImpl
 import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers.PlaceMapper
 import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers.PlaceMapperImpl
-import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers.ScenarioMapperImpl
 import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers.ScenarioMapper
+import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dbObjectMappers.ScenarioMapperImpl
 import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dtoMappers.ScenarioDtoMapper
 import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.dtoMappers.ScenarioDtoMapperImpl
 import com.fvanaldewereld.rpgcompanion.data.scenario.mappers.modelMappers.AuthorModelMapper
@@ -50,6 +50,7 @@ import com.fvanaldewereld.rpgcompanion.data.scenario.sources.localDatabase.dao.C
 import com.fvanaldewereld.rpgcompanion.data.scenario.sources.localDatabase.dao.PlaceDao
 import com.fvanaldewereld.rpgcompanion.data.scenario.sources.localDatabase.dao.ScenarioBaseDao
 import com.fvanaldewereld.rpgcompanion.data.scenario.sources.localDatabase.dao.ScenarioDao
+import com.fvanaldewereld.rpgcompanion.data.scenario.sources.localDatabase.dao.ScenarioDaoImpl
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -95,7 +96,7 @@ val SCENARIO_DATA_MODULE = module {
         ).build()
     }
     single<ScenarioBaseDao> { get<AppDatabase>().scenarioBaseDao() }
-    single<ScenarioDao> { ScenarioDao() }
+    single<ScenarioDao> { ScenarioDaoImpl() }
     single<ChapterDao> { get<AppDatabase>().chapterDao() }
     single<CharacterDao> { get<AppDatabase>().characterDao() }
     single<PlaceDao> { get<AppDatabase>().placeDao() }
