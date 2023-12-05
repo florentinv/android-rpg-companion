@@ -3,12 +3,13 @@ package com.fvanaldewereld.rpgcompanion.ui.scenario.list.components
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.ScenarioModel
-import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
+import com.fvanaldewereld.rpgcompanion.common.ui.theme.RpgCompanionTheme
 import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioModelMockFactory
 
 @Composable
@@ -19,18 +20,15 @@ internal fun ScenarioListSuccess(
     updateDeletingScenario: (scenarioModel: ScenarioModel) -> Unit = {},
 ) {
     LazyColumn(
-        modifier = modifier
-            .padding(20.dp),
+        modifier = modifier.padding(20.dp),
     ) {
-        itemsIndexed(scenarios) { _, scenario ->
-            scenario.id?.let { scenarioId ->
-                ScenarioListItem(
-                    id = scenarioId,
-                    scenario = scenario,
-                    goToScenarioDetail = goToScenarioDetail,
-                    deleteScenario = { updateDeletingScenario(scenario) },
-                )
-            }
+        itemsIndexed(scenarios) { index, scenario ->
+            ScenarioListItem(
+                scenario = scenario,
+                goToScenarioDetail = goToScenarioDetail,
+                deleteScenario = { updateDeletingScenario(scenario) },
+            )
+            if (index < scenarios.lastIndex) HorizontalDivider()
         }
     }
 }
@@ -38,7 +36,9 @@ internal fun ScenarioListSuccess(
 @Preview(showBackground = true)
 @Composable
 private fun ScenarioDetailSuccessPreview() {
-    RPGCompanionTheme {
-        ScenarioListSuccess(scenarios = listOf(ScenarioModelMockFactory.scenarioModelWithoutId))
+    RpgCompanionTheme {
+        ScenarioListSuccess(
+            scenarios = listOf(ScenarioModelMockFactory.scenarioModelWithId),
+        )
     }
 }

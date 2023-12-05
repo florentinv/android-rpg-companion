@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
+import com.fvanaldewereld.rpgcompanion.common.ui.theme.RpgCompanionTheme
 import com.fvanaldewereld.rpgcompanion.ui.scenario.list.R
 
 @Composable
@@ -28,7 +28,7 @@ internal fun ScenarioListAddButton(onClick: () -> Unit, modifier: Modifier = Mod
 @Preview(showBackground = true)
 @Composable
 private fun ScenarioListAddButtonPreview() {
-    RPGCompanionTheme {
+    RpgCompanionTheme {
         ScenarioListAddButton(onClick = {})
     }
 

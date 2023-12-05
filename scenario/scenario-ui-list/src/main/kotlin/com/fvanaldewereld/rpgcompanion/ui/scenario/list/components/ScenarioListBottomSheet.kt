@@ -25,7 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
+import com.fvanaldewereld.rpgcompanion.common.ui.theme.RpgCompanionTheme
 import com.fvanaldewereld.rpgcompanion.common.ui.theme.Typography
 import com.fvanaldewereld.rpgcompanion.ui.scenario.list.R
 
@@ -78,7 +78,7 @@ internal fun ScenarioListBottomSheet(
 @Preview
 @Composable
 private fun ScenarioListBottomSheetPreview() {
-    RPGCompanionTheme {
+    RpgCompanionTheme {
         ScenarioListBottomSheet()
     }
 }

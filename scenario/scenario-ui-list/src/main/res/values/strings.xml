@@ -7,10 +7,11 @@
     <string name="scenarioList_success_bottomSheet_submitButton_label">Submit</string>
     <string name="scenarioList_success_bottomSheet_textfield_label">URL</string>
     <string name="scenarioList_success_bottomSheet_title">Import new scenario</string>
+    <string name="scenarioList_success_deleteButton_contentDescription">delete scenario n°{%1$s}</string>
     <string name="scenarioList_success_dialog_cancel">Cancel</string>
     <string name="scenarioList_success_dialog_confirm">Confirm</string>
     <string name="scenarioList_success_dialog_description">Are you sure to delete the scenario named : \"%1$s\" ?</string>
     <string name="scenarioList_success_dialog_title">Confirm Deleting</string>
     <string name="scenarioList_success_dialog_warningIcon_contentDescription">Warning</string>
-    <string name="scenarioList_topBar_title">Scenario List</string>
+    <string name="scenarioList_topBar_title">My Scenarios</string>
 </resources>

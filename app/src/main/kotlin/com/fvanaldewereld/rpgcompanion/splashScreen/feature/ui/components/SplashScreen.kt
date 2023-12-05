@@ -14,7 +14,7 @@ import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
-import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
+import com.fvanaldewereld.rpgcompanion.common.ui.theme.RpgCompanionTheme
 
 @Composable
 fun SplashScreen(onAnimationFinished: () -> Unit) {
@@ -42,7 +42,7 @@ fun SplashScreen(onAnimationFinished: () -> Unit) {
 @Preview
 @Composable
 private fun SplashScreenPreview() {
-    RPGCompanionTheme {
+    RpgCompanionTheme {
         SplashScreen {}
     }
 }
