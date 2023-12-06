@@ -24,7 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.fvanaldewereld.rpgcompanion.api.domain.scenario.models.ScenarioModel
 import com.fvanaldewereld.rpgcompanion.common.ui.component.RpgCompanionTopAppBar
-import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
+import com.fvanaldewereld.rpgcompanion.common.ui.theme.RpgCompanionTheme
 import com.fvanaldewereld.rpgcompanion.common.ui.theme.Typography
 import com.fvanaldewereld.rpgcompanion.mockFactory.ScenarioModelMockFactory
 import com.fvanaldewereld.rpgcompanion.ui.scenario.detail.R
@@ -231,7 +231,7 @@ internal fun ScenarioDetailSuccess(
 @Preview(showBackground = true)
 @Composable
 internal fun ScenarioDetailSuccessPreview() {
-    RPGCompanionTheme {
+    RpgCompanionTheme {
         ScenarioDetailSuccess(scenario = ScenarioModelMockFactory.scenarioModelWithoutId)
     }
 }

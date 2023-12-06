@@ -9,7 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
+import com.fvanaldewereld.rpgcompanion.common.ui.theme.RpgCompanionTheme
 
 @Composable
 internal fun ScenarioListLoading(
@@ -30,7 +30,7 @@ internal fun ScenarioListLoading(
 @Preview(showBackground = true)
 @Composable
 private fun ScenarioDetailLoadingPreview() {
-    RPGCompanionTheme {
+    RpgCompanionTheme {
         ScenarioListLoading()
     }
 }

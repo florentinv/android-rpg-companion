@@ -9,7 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.fvanaldewereld.rpgcompanion.common.ui.theme.RPGCompanionTheme
+import com.fvanaldewereld.rpgcompanion.common.ui.theme.RpgCompanionTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -34,7 +34,7 @@ fun RpgCompanionTopAppBar(
 @Preview
 @Composable
 private fun RpgCompanionTopBarPreview() {
-    RPGCompanionTheme {
+    RpgCompanionTheme {
         RpgCompanionTopAppBar(
             title = "Title",
             onBackButtonPressed = {},
