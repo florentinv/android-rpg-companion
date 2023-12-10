@@ -3,6 +3,7 @@
 apply(from = "${project.rootDir}/gradle/ktlint.gradle")
 apply(from = "${project.rootDir}/gradle/sonarqube.gradle")
 apply(from = "${project.rootDir}/gradle/kover.gradle")
+apply(from = "${project.rootDir}/gradle/detekt.gradle")
 
 plugins {
     alias(libs.plugins.android.application) apply false
@@ -13,6 +14,7 @@ plugins {
     alias(libs.plugins.org.jetbrains.kotlin.jvm) apply false
     alias(libs.plugins.sonarqube) apply false
     alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.detekt)
 }
 
 buildscript {
@@ -23,4 +25,5 @@ buildscript {
 
 allprojects {
     apply(plugin = "kover")
+    apply(plugin = "io.gitlab.arturbosch.detekt")
 }

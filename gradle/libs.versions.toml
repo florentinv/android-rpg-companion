@@ -26,12 +26,13 @@ room = "2.5.0"
 # Plugins versions
 androidGradlePlugin = "8.1.1"
 androidLibraryPlugin = "8.1.1"
+detekt = "1.23.3"
 jetbrainsKotlinPlugin = "1.8.10"
+ksp = "1.8.10-1.0.9"
 ktlintPlugin = "11.3.1"
+material3Android = "1.2.0-alpha10"
 moduleDependencyGraphPlugin = "0.12"
 sonarqubePlugin = "4.3.1.3277"
-material3Android = "1.2.0-alpha10"
-ksp = "1.8.10-1.0.9"
 
 
 [libraries]
@@ -75,9 +76,10 @@ room = ["room-ktx", "room-runtime", "room-testing", "room-paging"]
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidLibraryPlugin" }
+detekt = {id = "io.gitlab.arturbosch.detekt", version.ref = "detekt"}
 jetbrains-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "jetbrainsKotlinPlugin" }
 jlleitschuh-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintPlugin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 module-dependency-graph = { id = "com.savvasdalkitsis.module-dependency-graph", version.ref = "moduleDependencyGraphPlugin" }
 org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinPlugin" }
 sonarqube = { id = "org.sonarqube", version.ref = "sonarqubePlugin" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
