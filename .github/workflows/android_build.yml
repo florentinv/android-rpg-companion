@@ -35,7 +35,19 @@ jobs:
       - name: Build and Test
         run: ./gradlew test
 
-      - name: "Run Sonar"
+      - name: "Run koverMergedXmlReport"
+        run: ./gradlew koverMergedXmlReport
+
+      - name: "Look after report 1"
+        run: ls
+
+      - name: "Look after report 2"
+        run: ls ./build/reports/kover/merged/xml
+
+      - name: "Look after report 3"
+        run: ls build/reports/kover/merged/xml
+
+      - name: "Run sonar"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

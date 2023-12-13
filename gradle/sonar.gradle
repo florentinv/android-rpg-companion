@@ -39,5 +39,3 @@ afterEvaluate {
         }
     }
 }
-
-project.tasks.sonar.dependsOn "koverMergedXmlReport"
