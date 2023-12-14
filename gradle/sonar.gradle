@@ -1,5 +1,16 @@
 apply plugin: libs.plugins.sonarqube.get().pluginId
 
+buildscript {
+    def propfile = file("${project.rootDir}/.secure/properties/sonar.properties")
+    if (propfile.exists()) {
+        def props = new Properties()
+        propfile.withReader {
+            props.load(it)
+            props.forEach { key, value -> project.ext[key] = value }
+        }
+    }
+}
+
 afterEvaluate {
     sonar {
         androidVariant 'debug'
@@ -9,8 +20,12 @@ afterEvaluate {
             property "sonar.organization", "florentinv"
             property "sonar.host.url", "https://sonarcloud.io"
             property "sonar.sources", "src/main"
+            property "sonar.sourceEncoding", "UTF-8"
             property "sonar.tests", "src/test, src/androidTest"
             property "sonar.test.inclusions", "**/androidTest"
+            property "sonar.exclusions",
+                    ".secure/properties/sonar.properties" + "app/src/main/assets/service-account-key.json"
+            property "sonar.junit.reportPaths", "**/build/test-results/testDebugUnitTest/**/*.xml"
             property "sonar.java.coveragePlugin", "jacoco"
             property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/kover/merged/xml/report.xml"
             // Please add exclusions here to exclude classes from sonarqube coverage reports
@@ -24,5 +39,3 @@ afterEvaluate {
         }
     }
 }
-
-project.tasks.sonar.dependsOn "koverMergedXmlReport"

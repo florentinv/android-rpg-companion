@@ -9,6 +9,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: main
 
       - name: "Set Up JDK 17"
         uses: actions/setup-java@v3
@@ -32,8 +34,23 @@ jobs:
       - name: "Run Ktlint Format"
         run: ./gradlew ktlintFormat
 
-      - name: "Build, Test, Generate Coverage Report, and run Sonar"
+      - name: Build and Test
+        run: ./gradlew test
+
+      - name: "Run koverMergedXmlReport"
+        run: ./gradlew koverMergedXmlReport
+
+      - name: "Look after report 1"
+        run: ls
+
+      - name: "Look after report 2"
+        run: ls ./build/reports/kover/merged/xml
+
+      - name: "Look after report 3"
+        run: ls build/reports/kover/merged/xml
+
+      - name: "Run sonar"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./gradlew sonar --info
+        run: ./gradlew sonar

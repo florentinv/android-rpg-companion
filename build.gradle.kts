@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 apply(from = "${project.rootDir}/gradle/ktlint.gradle")
-apply(from = "${project.rootDir}/gradle/sonarqube.gradle")
+apply(from = "${project.rootDir}/gradle/sonar.gradle")
 apply(from = "${project.rootDir}/gradle/kover.gradle")
 
 plugins {
